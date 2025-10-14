@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <div class="auth-page">
+        <div class="left2">
+            <div class="logo">
+                <p class="element"><span class="text-wrapper">V1nTag6</span> <span class="span">.</span></p>
+            </div>
+        </div>
+        <div class="sign-up">
+            <div class="div">
+                <header class="header">
+                    <div class="content">
+                        <div class="text-wrapper-2">Sign up</div>
+                    </div>
+                </header>
+
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <p class="already-have-an">
+                    <span class="text-wrapper-3">Already have an account?</span>
+                    <span class="text-wrapper-4">&nbsp;</span>
+                    <a href="{{ url_for('auth.login') }}" class="text-wrapper-5">Sign in</a>
+                </p>
+            </div>
+
+            <form method="POST" action="{{ url_for('auth.register') }}">
+                <div class="div">
+                    <div class="form">
+                        <div class="form-input">
+                            <div class="content-wrapper">
+                                <input type="text" name="full_name" class="form-control" placeholder="Your name">
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <div class="content-wrapper">
+                                <input type="text" name="username" class="form-control" required placeholder="Username">
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <div class="content-wrapper">
+                                <input type="email" name="email" class="form-control" required
+                                    placeholder="Email address">
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <div class="content-wrapper">
+                                <input type="password" name="password" class="form-control" required
+                                    placeholder="Password">
+                                <img class="toggle-password" src="{{ url_for('static', filename='img/eye.png') }}"
+                                    alt="Toggle Password">
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <div class="content-wrapper">
+                                <input type="password" name="confirm_password" class="form-control" required
+                                    placeholder="Confirm password">
+                            </div>
+                        </div>
+
+                        <div class="different-address">
+                            <div class="ratio-button">
+                                <input type="checkbox" class="custom-checkbox" name="agree_terms" id="agree_terms"
+                                    required>
+                            </div>
+                            <p class="i-agree-with-privacy">
+                                <span class="text-wrapper-3">I agree with </span>
+                                <span class="text-wrapper-7">Privacy Policy</span>
+                                <span class="text-wrapper-3"> and </span>
+                                <span class="text-wrapper-7">Terms of Use</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="button">
+                    <div class="show-more">Sign Up</div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for real-time validation -->
+    <script>
+        // Real-time username availability check
+        document.querySelector('input[name="username"]').addEventListener('blur', function () {
+            const username = this.value;
+            if (username.length > 3) {
+                fetch(`/api/check_username?username=${username}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.exists) {
+                            this.style.borderColor = 'red';
+                            // You can add error message display here
+                        } else {
+                            this.style.borderColor = 'green';
+                        }
+                    });
+            }
+        });
+
+        // Real-time email availability check
+        document.querySelector('input[name="email"]').addEventListener('blur', function () {
+            const email = this.value;
+            if (email.includes('@')) {
+                fetch(`/api/check_email?email=${email}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.exists) {
+                            this.style.borderColor = 'red';
+                        } else {
+                            this.style.borderColor = 'green';
+                        }
+                    });
+            }
+        });
+
+        // Password confirmation check
+        document.querySelector('input[name="confirm_password"]').addEventListener('input', function () {
+            const password = document.querySelector('input[name="password"]').value;
+            const confirmPassword = this.value;
+
+            if (confirmPassword && password !== confirmPassword) {
+                this.style.borderColor = 'red';
+            } else if (confirmPassword) {
+                this.style.borderColor = 'green';
+            }
+        });
+
+        // Real-time validation messages
+        function showValidationMessage(input, message, isError) {
+            // Remove existing message
+            const existingMessage = input.parentNode.querySelector('.validation-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            if (message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `validation-message ${isError ? 'error' : 'success'}`;
+                messageDiv.textContent = message;
+                messageDiv.style.fontSize = '12px';
+                messageDiv.style.marginTop = '5px';
+                messageDiv.style.color = isError ? 'red' : 'green';
+                input.parentNode.appendChild(messageDiv);
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.querySelector('.toggle-password');
+            const input = document.querySelector('input[name="password"]');
+            if (toggle && input) {
+                toggle.addEventListener('click', () => {
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
