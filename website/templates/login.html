@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="auth-page">
+        <!-- Cột bên trái -->
+        <div class="left1">
+            <div class="logo">
+                <p class="element">
+                    <span class="text-wrapper">V1nTag6</span>
+                    <span class="span">.</span>
+                </p>
+            </div>
+        </div>
+        <!-- Form Sign In -->
+        <div class="sign-in">
+            <div class="div">
+                <header class="header">
+                    <div class="content">
+                        <div class="text-wrapper-2">Sign In</div>
+
+                    </div>
+                </header>
+
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <p class="don-t-have-an-accout">
+                    <span class="text-wrapper-3">Don't have an account yet?</span>
+                    <span class="text-wrapper-4">&nbsp;</span>
+                    <a href="{{ url_for('auth.register') }}" class="text-wrapper-5">Sign Up</a>
+                </p>
+            </div>
+
+            <!-- Form đăng nhập -->
+            <form method="POST" action="{{ url_for('auth.login') }}">
+                <div class="div">
+                    <div class="form">
+                        <!-- Email -->
+                        <div class="form-input">
+                            <div class="content-wrapper">
+                                <div class="content-2">
+                                    <input type="email" name="email" placeholder="Email address"
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-input password-field">
+                            <div class="content-wrapper">
+                                <div class="content-2">
+                                    <input type="password" name="password" placeholder="Password" class="form-control"
+                                        required>
+                                    <img class="toggle-password" src="{{ url_for('static', filename='img/eye.png') }}"
+                                        alt="Toggle Password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Options -->
+                        <div class="option">
+                            <div class="text-wrapper-7-2">Forgot password?</div>
+                            <div class="ratio-button2">
+                                <input type="checkbox" class="custom-checkbox" name="remember-me" id="remember-me">
+                            </div>
+                            <div class="text-wrapper-8">Remember me</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút đăng nhập -->
+                <button class="button" type="submit">
+                    <div class="show-more">Sign In</div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script toggle password -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.querySelector('.toggle-password');
+            const input = document.querySelector('input[name="password"]');
+            if (toggle && input) {
+                toggle.addEventListener('click', () => {
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
