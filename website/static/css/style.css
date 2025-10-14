@@ -1,1 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100;200;300;400&display=swap');
 
+.auth-page {
+    background-color: var(--white);
+    width: 100%;
+    min-width: 1440px;
+    min-height: 1080px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 88px;
+}
+
+
+.auth-page .left1 {
+    width: 736px;
+    height: 1080px;
+    flex: 1;
+    display: flex;
+    background-image: url(../img/signin.png);
+    background-size: 100% 100%;
+}
+
+.auth-page .left2 {
+    width: 736px;
+    height: 1080px;
+    flex: 1;
+    display: flex;
+    background-image: url(../img/register.png);
+    background-size: 100% 100%;
+}
+
+.auth-page .logo {
+    margin-top: 32px;
+    width: 105px;
+    margin-left: 315px;
+    display: flex;
+}
+
+.auth-page .element {
+    width: 105px;
+    height: 24px;
+    font-family: "Poppins-Medium", Helvetica;
+    font-weight: 500;
+    color: transparent;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.auth-page .text-wrapper {
+    font-family: 'Playwrite US Modern', sans-serif;
+    color: #000000;
+    font-weight: 200;
+}
+
+.auth-page .span {
+    color: #6c7174;
+}
+
+.auth-page .sign-up {
+    display: flex;
+    margin-top: 220px;
+    width: 456px;
+    height: 520px;
+    position: relative;
+    margin-right: 160px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
+    background-color: var(--neutral-01100);
+}
+
+.auth-page .sign-in {
+    display: flex;
+    margin-top: 220px;
+    width: 456px;
+    height: 376px;
+    position: relative;
+    margin-right: 160px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
+    background-color: var(--neutral-01100);
+}
+
+.auth-page .div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.auth-page .header {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: transparent;
+}
+
+.auth-page .content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+}
+
+.auth-page .text-wrapper-2 {
+    position: relative;
+    flex: 1;
+    margin-top: -1.00px;
+    font-family: var(--headline-4-font-family);
+    font-weight: var(--headline-4-font-weight);
+    color: var(--neutral-07100);
+    font-size: var(--headline-4-font-size);
+    letter-spacing: var(--headline-4-letter-spacing);
+    line-height: var(--headline-4-line-height);
+    font-style: var(--headline-4-font-style);
+}
+
+.auth-page .already-have-an {
+    position: relative;
+    align-self: stretch;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.auth-page .don-t-have-an-accout {
+    position: relative;
+    align-self: stretch;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.auth-page .text-wrapper-3 {
+    color: #6c7174;
+    font-family: var(--body-2-font-family);
+    font-style: var(--body-2-font-style);
+    font-weight: var(--body-2-font-weight);
+    letter-spacing: var(--body-2-letter-spacing);
+    line-height: var(--body-2-line-height);
+    font-size: var(--body-2-font-size);
+}
+
+.auth-page .text-wrapper-4 {
+    color: #141718;
+    font-family: var(--body-2-font-family);
+    font-style: var(--body-2-font-style);
+    font-weight: var(--body-2-font-weight);
+    letter-spacing: var(--body-2-letter-spacing);
+    line-height: var(--body-2-line-height);
+    font-size: var(--body-2-font-size);
+}
+
+.auth-page .text-wrapper-5 {
+    font-family: var(--body-2-semi-font-family);
+    font-weight: var(--body-2-semi-font-weight);
+    color: #38cb89;
+    font-style: var(--body-2-semi-font-style);
+    letter-spacing: var(--body-2-semi-letter-spacing);
+    line-height: var(--body-2-semi-line-height);
+    font-size: var(--body-2-semi-font-size);
+}
+
+.auth-page .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.auth-page .form-input {
+    display: flex;
+    flex-direction: column;
+    width: 456px;
+    height: 40px;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    position: relative;
+    border: none; /* ✅ Bỏ gạch dưới */
+}
+
+.auth-page .form-control {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: "Poppins", Helvetica, sans-serif;
+    font-size: 16px;
+    color: #141718;
+}
+
+.auth-page .content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0px 0px 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    margin-bottom: -8.00px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: var(--neutral-03100);
+}
+
+.auth-page .content-2 {
+    height: 32px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+}
+
+.auth-page .text-wrapper-6 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-family: var(--body-2-font-family);
+    font-weight: var(--body-2-font-weight);
+    color: var(--neutral-04100);
+    font-size: var(--body-2-font-size);
+    line-height: 1;
+}
+
+.auth-page .huge-icon-interface {
+    position: absolute;
+    width: 83.33%;
+    height: 58.33%;
+    top: 17.71%;
+    left: 5.21%;
+}
+
+.auth-page .different-address {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    margin-bottom: 20px;
+}
+
+.auth-page .option {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 40px;
+}
+
+.auth-page .ratio-button {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    background-color: var(--neutrals-8);
+    border-radius: 4px;
+    border: 1.5px solid;
+    border-color: var(--neutral-04100);
+    flex-shrink: 0;
+}
+
+.auth-page .ratio-button2 {
+    position: absolute;
+    top: 3.5px;
+    left: 0px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--neutrals-8);
+    border-radius: 4px;
+    border: 1.5px solid;
+    border-color: var(--neutral-04100);
+}
+
+.auth-page .custom-checkbox {
+    position: relative;
+    top: -3px;
+    left: -4.5px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--neutrals-8);
+    border-radius: 6px;
+    border: 1.5px solid;
+    border-color: var(--neutral-04100);
+}
+
+.auth-page .i-agree-with-privacy {
+    position: relative;
+    flex: 1;
+    margin-top: -1.00px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.auth-page .text-wrapper-7 {
+    font-family: var(--body-2-semi-font-family);
+    font-weight: var(--body-2-semi-font-weight);
+    color: #141718;
+    font-style: var(--body-2-semi-font-style);
+    letter-spacing: var(--body-2-semi-letter-spacing);
+    line-height: var(--body-2-semi-line-height);
+    font-size: var(--body-2-semi-font-size);
+}
+
+.auth-page .text-wrapper-7-2{
+    position: absolute;
+    top: calc(50.00% -13px);
+    right: 0;
+    font-family: var(--body-2-semi-font-family);
+    font-weight: var(--body-2-semi-font-weight);
+    color: var(--neutral-07100);
+    font-style: var(--body-2-semi-font-style);
+    letter-spacing: var(--body-2-semi-letter-spacing);
+    line-height: var(--body-2-semi-line-height);
+    font-size: var(--body-2-semi-font-size);
+}
+
+.auth-page .text-wrapper-8 {
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    font-family: var(--body-2-font-family);
+    font-weight: var(--body-2-font-weight);
+    color: var(--neutral-04100);
+    font-size: var(--body-2-font-size);
+    letter-spacing: var(--body-2-letter-spacing);
+    line-height: var(--body-2-line-height);
+    white-space: nowrap;
+    font-style: var(--body-2-font-style);
+}
+
+.auth-page .button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 456px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 40px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: var(--neutral-07100);
+    border-radius: 8px;
+}
+
+.auth-page .show-more {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: var(--button-s-font-family);
+    font-weight: var(--button-s-font-weight);
+    color: #ffffff;
+    font-size: var(--button-s-font-size);
+    text-align: center;
+    letter-spacing: var(--button-s-letter-spacing);
+    line-height: var(--button-s-line-height);
+    white-space: nowrap;
+    font-style: var(--button-s-font-style);
+}
+/* Khung của dòng password */
+.password-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.password-field .form-control {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+/* Icon con mắt ở cuối dòng */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    bottom: 6px;
+    /* căn theo chiều dọc input */
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+/* Flash Messages Styles */
+.flash-messages {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.flash-message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-family: var(--body-2-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid;
+    animation: slideIn 0.3s ease-out;
+}
+
+.flash-message.success {
+    background-color: #f0f9f4;
+    color: #0d6832;
+    border-color: #38cb89;
+}
+
+.flash-message.error {
+    background-color: #fef0f0;
+    color: #c53030;
+    border-color: #f56565;
+}
+
+.flash-message.info {
+    background-color: #eff6ff;
+    color: #1e40af;
+    border-color: #3b82f6;
+}
+
+.flash-message.warning {
+    background-color: #fffbeb;
+    color: #92400e;
+    border-color: #f59e0b;
+}
+
+/* Validation Messages */
+.validation-message {
+    font-size: 12px;
+    margin-top: 5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--caption-1-font-family);
+}
+
+.validation-message.error {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.validation-message.success {
+    color: #059669;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+}
+
+/* Animation for flash messages */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Auto-hide flash messages after 5 seconds */
+.flash-message {
+    animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-in 4.7s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+}
+
+/* Custom Checkbox Fix */
+.auth-page .custom-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: var(--neutrals-8);
+    border-radius: 4px;
+    border: 1.5px solid var(--neutral-04100);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.auth-page .custom-checkbox:checked {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.auth-page .custom-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Remember Me checkbox alignment */
+.option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.ratio-button2 {
+    position: relative;
+    width: 18px;
+    height: 18px;
+}
+
+/* Terms and Conditions checkbox */
+.different-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.ratio-button {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
