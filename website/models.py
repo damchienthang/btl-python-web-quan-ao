@@ -165,3 +165,63 @@ class User:
                 'full_name': user['full_name']
             }
         return None
+
+
+'''
+Bạn thứ 2 bắt đầu làm từ đây
+'''
+
+
+
+class Product:
+    """Class quản lý sản phẩm - để phát triển sau"""
+    @staticmethod
+    def init_db():
+        """Khởi tạo database cho products - để phát triển sau"""
+        pass
+    
+    @staticmethod
+    def get_all_products():
+        """Lấy tất cả sản phẩm - để phát triển sau"""
+        return []
+    
+    @staticmethod
+    def get_product_by_id(product_id):
+        """Lấy sản phẩm bằng ID - để phát triển sau"""
+        return None
+
+class CartItem:
+    """Class quản lý giỏ hàng - để phát triển sau"""
+    @staticmethod
+    def add_to_cart(user_id, product_id, quantity=1):
+        """Thêm sản phẩm vào giỏ hàng - để phát triển sau"""
+        return True
+    
+    @staticmethod
+    def get_cart_items(user_id):
+        """Lấy tất cả sản phẩm trong giỏ hàng - để phát triển sau"""
+        return []
+    
+    @staticmethod
+    def remove_from_cart(user_id, product_id):
+        """Xóa sản phẩm khỏi giỏ hàng - để phát triển sau"""
+        return True
+
+class Order:
+    """Class quản lý đơn hàng - để phát triển sau"""
+    @staticmethod
+    def create_order(user_id, cart_items):
+        """Tạo đơn hàng mới từ giỏ hàng - để phát triển sau"""
+        return 1
+    
+    @staticmethod
+    def get_user_orders(user_id):
+        """Lấy đơn hàng của user - để phát triển sau"""
+        return []
+
+class OrderItem:
+    """Class quản lý chi tiết đơn hàng - để phát triển sau"""
+    @staticmethod
+    def get_order_items(order_id):
+        """Lấy chi tiết đơn hàng - để phát triển sau"""
+        return []
