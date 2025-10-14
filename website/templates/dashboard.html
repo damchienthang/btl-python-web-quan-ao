@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="auth-page">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <div class="logo">
+                    <p class="element">
+                        <span class="text-wrapper">V1nTag6</span>
+                        <span class="span">.</span>
+                    </p>
+                </div>
+                <nav class="dashboard-nav">
+                    <a href="{{ url_for('main.profile') }}" class="nav-link">Profile</a>
+                    <a href="{{ url_for('auth.logout') }}" class="nav-link logout">Logout</a>
+                </nav>
+            </header>
+
+            <main class="dashboard-main">
+                <div class="welcome-section">
+                    <h1>Welcome back, {{ full_name }}! 👋</h1>
+                    <p>You have successfully logged in to your account.</p>
+                </div>
+
+                <div class="user-info">
+                    <div class="info-card">
+                        <h3>Account Information</h3>
+                        <div class="info-item">
+                            <strong>Full Name:</strong> {{ full_name or 'Not set' }}
+                        </div>
+                        <div class="info-item">
+                            <strong>Username:</strong> {{ username }}
+                        </div>
+                        <div class="info-item">
+                            <strong>Email:</strong> {{ email }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="{{ url_for('main.profile') }}" class="action-button">
+                        Edit Profile
+                    </a>
+                    <a href="{{ url_for('auth.logout') }}" class="action-button secondary">
+                        Logout
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
