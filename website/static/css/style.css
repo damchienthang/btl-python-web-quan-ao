@@ -417,11 +417,6 @@
     opacity: 1;
 }
 /* Flash Messages Styles */
-.flash-messages {
-    margin-bottom: 20px;
-    width: 100%;
-}
-
 .flash-message {
     padding: 12px 16px;
     border-radius: 8px;
@@ -535,33 +530,4 @@
     color: white;
     font-size: 12px;
     font-weight: bold;
-}
-
-/* Remember Me checkbox alignment */
-.option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-}
-
-.ratio-button2 {
-    position: relative;
-    width: 18px;
-    height: 18px;
-}
-
-/* Terms and Conditions checkbox */
-.different-address {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.ratio-button {
-    position: relative;
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    margin-top: 3px;
 }
