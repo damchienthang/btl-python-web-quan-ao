@@ -126,7 +126,13 @@ def register():
 def logout():
     """Đăng xuất"""
     session.clear()
-    flash('Bạn đã đăng xuất thành công!', 'info')
+    flash('Logout successful! Have a good day,', 'info')
+    return redirect(url_for('auth.login'))
+
+@auth_bp.route('/forgot_password')
+def forgot_password():
+    """Xử lý quên mật khẩu - hiện thông báo ngay"""
+    flash('Password reset feature will be available soon!', 'info')
     return redirect(url_for('auth.login'))
 
 # API endpoints cho AJAX
