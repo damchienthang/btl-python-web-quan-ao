@@ -76,7 +76,10 @@
 
                         <!-- Options -->
                         <div class="option">
-                            <div class="text-wrapper-7-2">Forgot password?</div>
+                            <a href="{{ url_for('auth.forgot_password') }}" class="text-wrapper-7-2"
+                                style="text-decoration: none; cursor: pointer;">
+                                Forgot password?
+                            </a>
                             <div class="ratio-button2">
                                 <input type="checkbox" class="custom-checkbox" name="remember-me" id="remember-me">
                             </div>
