@@ -57,7 +57,8 @@
                             <div class="content-wrapper">
                                 <div class="content-2">
                                     <input type="email" name="email" placeholder="Email address"
-                                        class="form-control" required>
+                                        class="form-control"
+                                        value="{{ request.form.get('email', '') }}">
                                 </div>
                             </div>
                         </div>
@@ -66,8 +67,7 @@
                         <div class="form-input password-field">
                             <div class="content-wrapper">
                                 <div class="content-2">
-                                    <input type="password" name="password" placeholder="Password" class="form-control"
-                                        required>
+                                    <input type="password" name="password" placeholder="Password" class="form-control">
                                     <img class="toggle-password" src="{{ url_for('static', filename='img/eye.png') }}"
                                         alt="Toggle Password">
                                 </div>
@@ -76,10 +76,7 @@
 
                         <!-- Options -->
                         <div class="option">
-                            <a href="{{ url_for('auth.forgot_password') }}" class="text-wrapper-7-2"
-                                style="text-decoration: none; cursor: pointer;">
-                                Forgot password?
-                            </a>
+                            <a href="{{ url_for('auth.forgot_password') }}" class="text-wrapper-7-2">Forgot password?</a>
                             <div class="ratio-button2">
                                 <input type="checkbox" class="custom-checkbox" name="remember-me" id="remember-me">
                             </div>
