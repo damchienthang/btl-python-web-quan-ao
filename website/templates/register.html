@@ -48,26 +48,28 @@
                     <div class="form">
                         <div class="form-input">
                             <div class="content-wrapper">
-                                <input type="text" name="full_name" class="form-control" placeholder="Your name">
+                                <input type="text" name="full_name" class="form-control" placeholder="Your name"
+                                value="{{ request.form.get('full_name', '') }}">
                             </div>
                         </div>
 
                         <div class="form-input">
                             <div class="content-wrapper">
-                                <input type="text" name="username" class="form-control" required placeholder="Username">
+                                <input type="text" name="username" class="form-control" placeholder="Username"
+                                value="{{ request.form.get('username', '') }}" novalidate>
                             </div>
                         </div>
 
                         <div class="form-input">
                             <div class="content-wrapper">
-                                <input type="email" name="email" class="form-control" required
-                                    placeholder="Email address">
+                                <input type="email" name="email" class="form-control" placeholder="Email address"
+                                    value="{{ request.form.get('email', '') }}">
                             </div>
                         </div>
 
                         <div class="form-input">
                             <div class="content-wrapper">
-                                <input type="password" name="password" class="form-control" required
+                                <input type="password" name="password" class="form-control"
                                     placeholder="Password">
                                 <img class="toggle-password" src="{{ url_for('static', filename='img/eye.png') }}"
                                     alt="Toggle Password">
@@ -76,7 +78,7 @@
 
                         <div class="form-input">
                             <div class="content-wrapper">
-                                <input type="password" name="confirm_password" class="form-control" required
+                                <input type="password" name="confirm_password" class="form-control"
                                     placeholder="Confirm password">
                             </div>
                         </div>
@@ -84,7 +86,7 @@
                         <div class="different-address">
                             <div class="ratio-button">
                                 <input type="checkbox" class="custom-checkbox" name="agree_terms" id="agree_terms"
-                                    required>
+                                    {% if request.form.get('agree_terms') %}checked{% endif %}>
                             </div>
                             <p class="i-agree-with-privacy">
                                 <span class="text-wrapper-3">I agree with </span>
@@ -105,6 +107,26 @@
 
     <!-- JavaScript for real-time validation -->
     <script>
+
+        // Real-time full name validation
+        document.querySelector('input[name="full_name"]').addEventListener('blur', function () {
+            const fullName = this.value.trim();
+            const namePattern = /^[a-zA-ZÀ-ỹ\s]+$/; // Chỉ cho phép chữ cái và khoảng trắng
+
+            if (fullName === '') {
+                // Nếu trống, reset border
+                this.style.borderColor = '';
+                showValidationMessage(this, '', false);
+            } else if (!namePattern.test(fullName)) {
+                // Nếu có ký tự đặc biệt hoặc số
+                this.style.borderColor = 'red';
+                showValidationMessage(this, 'Full name cannot contain special characters!', true);
+            } else {
+                // Hợp lệ
+                this.style.borderColor = 'green';
+            }
+        });
+
         // Real-time username availability check
         document.querySelector('input[name="username"]').addEventListener('blur', function () {
             const username = this.value;
@@ -125,7 +147,7 @@
         // Real-time email availability check
         document.querySelector('input[name="email"]').addEventListener('blur', function () {
             const email = this.value;
-            if (email.includes('@')) {
+            if (email.includes('@') && email.includes('.')) {
                 fetch(`/api/check_email?email=${email}`)
                     .then(response => response.json())
                     .then(data => {
