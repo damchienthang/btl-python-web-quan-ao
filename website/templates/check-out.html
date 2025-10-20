@@ -198,7 +198,9 @@
                   </div>
                 </div>
               </div>
-              <button class="show-more-wrapper"><div class="show-more">Place Order</div></button>
+              <a href="{{ url_for('main.order_complete') }}" class="show-more-wrapper">
+                <div class="show-more">Place Order</div>
+              </a>
             </div>
                   <div class="elements-checkout">
                     <div class="text-wrapper-12">Order summary</div>
@@ -259,13 +261,6 @@
                           </div>
                         </div>
                         {% endif %}
-                        <div class="order-summary-coupon">
-                          <div class="form-input">
-                            <div class="input-3"><input class="icon-input-3" placeholder="Input" type="text" /></div>
-                          </div>
-                          <button class="button-2"><div class="show-more">Apply</div></button>
-                        </div>
-                        </div>
                         <div class="fields">
                           <div class="elements-order">
                             <div class="title-amount-wrapper">
@@ -277,9 +272,9 @@
                                       fill="#141718" />
                                   </svg>
 
-                                  <div class="text-wrapper-11">JenkateMW</div>
+                                  <div class="text-wrapper-11">Discount</div>
                                 </div>
-                              <div class="value">-$25.00 [Remove]</div>
+                              <div class="value">-$25.00</div>
                             </div>
                           </div>
                         </div>
