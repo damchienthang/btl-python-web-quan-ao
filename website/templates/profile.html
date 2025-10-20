@@ -94,7 +94,9 @@
 
                 </div>
               </div>
-              <div class="text-wrapper-4">Sofia Havertz</div>
+              <div class="text-wrapper-4" id="display-name">
+                {{ session.full_name or 'Display name' }}
+              </div>
             </div>
             <div class="frame-3">
               <div class="elements"><div class="menu-item">Account</div></div>
@@ -132,7 +134,7 @@
                 <div class="text-wrapper-6">OLD PASSWORD</div>
                 <div class="input">
                   <div class="your-email-wrapper">
-                    <input class="icon-input" placeholder="Old password" type="password" />
+                    <input class="icon-input" placeholder="Old password" type="password" id="old-password" />
                   </div>
                 </div>
               </div>
@@ -140,17 +142,17 @@
                 <div class="text-wrapper-6">NEW PASSWORD</div>
                 <div class="input">
                   <div class="your-email-wrapper">
-                    <input class="icon-input" placeholder="New password" type="password" />
+                    <input class="icon-input" placeholder="New password" type="password" id="new-password" />
                 </div>
                 </div>
               </div>
               <div class="div-2">
                 <div class="repeat-NEW-PASSWORD">REPEAT NEW PASSWORD</div>
                 <div class="input">
-                    <input class="icon-input" placeholder="Repeat new password" type="password" />
+                    <input class="icon-input" placeholder="Repeat new password" type="password" id="confirm-password" />
                 </div>
               </div>
-              <button class="show-more-wrapper"><div class="show-more">Save changes</div></button>
+              <button class="show-more-wrapper"><div class="show-more" id="save-password-btn">Save changes</div></button>
             </div>
           </div>
         </div>
@@ -200,5 +202,57 @@
         </div>
       </footer>
     </div>
+    <script>
+        document.getElementById('save-password-btn').addEventListener('click', function () {
+            // Lấy giá trị từ các trường input
+            const oldPassword = document.getElementById('old-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Kiểm tra validation
+            if (!oldPassword || !newPassword || !confirmPassword) {
+                alert('Please fill in all password fields!');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                alert('New password must be at least 6 characters long!');
+                return;
+            }
+
+            // Gửi request đến server
+            fetch('{{ url_for("auth.change_password") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    old_password: oldPassword,
+                    new_password: newPassword
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Password changed successfully!');
+                        // Reset form
+                        document.getElementById('old-password').value = '';
+                        document.getElementById('new-password').value = '';
+                        document.getElementById('confirm-password').value = '';
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while changing password.');
+                });
+        });
+    </script>
   </body>
 </html>
