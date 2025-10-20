@@ -407,7 +407,24 @@ class CartItem:
         finally:
             cursor.close()
             conn.close()
-
+    @staticmethod
+    def clear_cart(user_id):
+        """Xóa toàn bộ giỏ hàng của user"""
+        conn = CartItem.get_db_connection()
+        if conn is None:
+            return False
+        
+        cursor = conn.cursor()
+        try:
+            cursor.execute('DELETE FROM cart_items WHERE user_id = %s', (user_id,))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Lỗi xóa giỏ hàng: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
 class Cart:
     """Class quản lý giỏ hàng tổng thể"""
     
