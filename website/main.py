@@ -245,3 +245,11 @@ def place_order():
         print(f"Error placing order: {e}")
         return jsonify({'success': False, 'message': 'Error placing order!'})
 
+@main_bp.route('/order_complete')
+def order_complete():
+    """Trang xác nhận đơn hàng thành công"""
+    if 'user_id' not in session:
+        return redirect(url_for('auth.login'))
+    
+    return render_template('complete.html')
+
