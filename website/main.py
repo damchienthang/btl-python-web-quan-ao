@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify
-from website.models import User
-
+from website.models import User, Cart, CartItem, Product
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
@@ -85,3 +84,71 @@ def change_password():
     else:
         return jsonify({'success': False, 'message': 'Error changing password!'})
 
+
+
+@main_bp.route('/cart')
+def cart():
+    """Trang giỏ hàng - hiển thị CartItem và tính tổng tiền"""
+    if 'user_id' not in session:
+        return redirect(url_for('auth.login'))
+    
+    cart_id = Cart.get_or_create_cart(session['user_id'])
+    if not cart_id:
+        return render_template('cart.html', cart_items=[], subtotal=0.0, total=0.0)
+    
+    cart_items = CartItem.get_cart_items(cart_id)
+    subtotal = Cart.get_cart_subtotal(cart_id)
+    total = subtotal  # Có thể thêm shipping sau
+    
+    for item in cart_items:
+        product = Product.get_product_by_id(item['product_id'])
+        if product:
+            item['product_name'] = product['name']
+            item['product_color'] = product.get('color', 'N/A')
+            item['price'] = float(product['price'])
+            item['subtotal'] = item['price'] * item['quantity']
+            item['image_url'] = product.get('image_url', '')
+    
+    return render_template('cart.html', 
+                           cart_items=cart_items, 
+                           subtotal=subtotal, 
+                           total=total)
+
+@main_bp.route('/update_cart', methods=['POST'])
+def update_cart():
+    if 'user_id' not in session:
+        return jsonify({'success': False, 'message': 'Please login!'})
+    
+    cart_id = Cart.get_or_create_cart(session['user_id'])
+    if not cart_id:
+        return jsonify({'success': False, 'message': 'Error getting cart!'})
+    
+    action = request.form.get('action')
+    product_id = request.form.get('product_id')
+    if not product_id:
+        return jsonify({'success': False, 'message': 'Invalid product ID!'})
+    product_id = int(product_id)
+    
+    if action == 'remove':
+        if CartItem.remove_from_cart(cart_id, product_id):
+            subtotal = Cart.get_cart_subtotal(cart_id)
+            total = subtotal
+            return jsonify({'success': True, 'item_id': product_id, 'subtotal': subtotal, 'total': total})
+        else:
+            return jsonify({'success': False, 'message': 'Error removing item!'})
+    
+    elif action == 'update':
+        quantity = request.form.get('quantity')
+        if not quantity:
+            return jsonify({'success': False, 'message': 'Invalid quantity!'})
+        quantity = int(quantity)
+        if CartItem.update_quantity(cart_id, product_id, quantity):
+            subtotal = Cart.get_cart_subtotal(cart_id)
+            total = subtotal
+            product = Product.get_product_by_id(product_id)
+            item_subtotal = float(product['price']) * quantity if quantity > 0 and product else 0
+            return jsonify({'success': True, 'item_id': product_id, 'item_subtotal': item_subtotal, 'subtotal': subtotal, 'total': total})
+        else:
+            return jsonify({'success': False, 'message': 'Error updating quantity!'})
+    
+    return jsonify({'success': False, 'message': 'Invalid action!'})

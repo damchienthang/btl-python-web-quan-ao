@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals_cart.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide_cart.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_cart.css') }}" />
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+  </head>
+  <body>
+    <div class="cart">
+      <div class="navigation-bar">
+        <div class="logo">
+          <p class="element"><span class="text-wrapper">V1nTag6 </span> <span class="span">.</span></p>
+        </div>
+        <div class="elements-navigation">
+          <button class="button-wrapper">
+            <button class="button">
+              <div class="content"><div class="get-started">Home</div></div>
+            </button>
+          </button>
+          <div class="div-wrapper">
+            <button class="content-wrapper">
+              <div class="content"><div class="div">Shop</div></div>
+            </button>
+          </div>
+          <div class="div-wrapper">
+            <button class="content-wrapper">
+              <div class="content"><div class="div">Product</div></div>
+            </button>
+          </div>
+          <button class="button-wrapper">
+            <button class="content-wrapper">
+              <div class="content"><div class="div">Contact Us</div></div>
+            </button>
+          </button>
+        </div>
+        <div class="icons">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.5 18.5L22 22M21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21C16.7467 21 21 16.7467 21 11.5Z" stroke="#141718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3088 18.2988C16.3154 15.6418 13.7536 13.75 10.75 13.75C7.74638 13.75 5.1846 15.6418 4.19117 18.2988M17.3088 18.2988C19.4172 16.4654 20.75 13.7634 20.75 10.75C20.75 5.22715 16.2728 0.75 10.75 0.75C5.22715 0.75 0.75 5.22715 0.75 10.75C0.75 13.7634 2.08285 16.4654 4.19117 18.2988M17.3088 18.2988C15.5531 19.8256 13.2595 20.75 10.75 20.75C8.24052 20.75 5.94694 19.8256 4.19117 18.2988M13.75 7.75C13.75 9.40685 12.4069 10.75 10.75 10.75C9.09315 10.75 7.75 9.40685 7.75 7.75C7.75 6.09315 9.09315 4.75 10.75 4.75C12.4069 4.75 13.75 6.09315 13.75 7.75Z" stroke="#141718" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+
+          <div class="elements-navigation-2">
+            <div class="frame"><div class="text-wrapper-2">{{ cart_items|length }}</div></div> <!-- Hiển thị số lượng sản phẩm trong giỏ -->
+            <svg width="50" height="28" viewBox="0 0 50 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_311_1790)">
+<circle cx="40" cy="14" r="10" fill="#141718"/>
+<path d="M36.9281 18V16.6705L40.0346 13.794C40.2988 13.5384 40.5204 13.3082 40.6994 13.1037C40.8812 12.8991 41.019 12.6989 41.1127 12.5028C41.2065 12.304 41.2534 12.0895 41.2534 11.8594C41.2534 11.6037 41.1951 11.3835 41.0787 11.1989C40.9622 11.0114 40.8031 10.8679 40.6014 10.7685C40.3997 10.6662 40.171 10.6151 39.9153 10.6151C39.6483 10.6151 39.4153 10.669 39.2164 10.777C39.0176 10.8849 38.8642 11.0398 38.7562 11.2415C38.6483 11.4432 38.5943 11.6832 38.5943 11.9616H36.8429C36.8429 11.3906 36.9721 10.8949 37.2306 10.4744C37.4892 10.054 37.8514 9.72869 38.3173 9.49858C38.7832 9.26847 39.3201 9.15341 39.9281 9.15341C40.5531 9.15341 41.0971 9.2642 41.5602 9.4858C42.0261 9.70455 42.3883 10.0085 42.6468 10.3977C42.9054 10.7869 43.0346 11.233 43.0346 11.7358C43.0346 12.0653 42.9693 12.3906 42.8386 12.7116C42.7108 13.0327 42.4821 13.3892 42.1525 13.7812C41.823 14.1705 41.3585 14.6378 40.7591 15.1832L39.4849 16.4318V16.4915H43.1497V18H36.9281Z" fill="white"/>
+</g>
+<path d="M10 8L10 9C10 10.6569 11.3431 12 13 12C14.6569 12 16 10.6569 16 9V8" stroke="#141718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.6115 5H9.38851C7.43316 5 5.7644 6.41365 5.44294 8.3424L3.77627 18.3424C3.36992 20.7805 5.25009 23 7.72185 23H18.2782C20.7499 23 22.6301 20.7805 22.2237 18.3424L20.5571 8.3424C20.2356 6.41365 18.5669 5 16.6115 5Z" stroke="#141718" stroke-width="1.5" stroke-linejoin="round"/>
+<defs>
+<clipPath id="clip0_311_1790">
+<rect width="20" height="20" fill="white" transform="translate(30 4)"/>
+</clipPath>
+</defs>
+</svg>
+
+          </div>
+        </div>
+      </div>
+      <div class="div-2">
+        <div class="title">
+          <div class="text-wrapper-3">Cart</div>
+          <div class="process">
+            <div class="frame-wrapper">
+              <div class="frame-2">
+                <div class="frame-3"><div class="text-wrapper-4">1</div></div>
+                <div class="text-wrapper-5">Shopping cart</div>
+              </div>
+            </div>
+            <div class="process-2">
+              <div class="frame-2">
+                <div class="frame-4"><div class="text-wrapper-6">2</div></div>
+                <div class="text-wrapper-7">Checkout details</div>
+              </div>
+            </div>
+            <div class="process-2">
+              <div class="frame-2">
+                <div class="frame-4"><div class="text-wrapper-4">3</div></div>
+                <div class="text-wrapper-7">Order complete</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div-3">
+          <div class="div-4">
+            <div class="div-3">
+              <div class="table-header">
+                <div class="text-wrapper-8">Product</div>
+                <div class="titles">
+                  <div class="text-wrapper-8">Quantity</div>
+                  <div class="text-wrapper-8">Price</div>
+                  <div class="text-wrapper-8">Subtotal</div>
+                </div>
+              </div>
+              <!-- Phần động: Loop qua cart_items từ DB -->
+              {% if cart_items %}
+                {% for item in cart_items %}
+                  <div class="elements-cart" data-item-id="{{ item.product_id }}"> <!-- Thêm data-item-id để JS dễ lấy -->
+                    <div class="cart-item">
+                      <div class="content-2">
+                        <!-- Hình ảnh sản phẩm từ DB -->
+                        <img class="image-placeholder" src="{{ item.image_url }}" alt="{{ item.product_name }}" />
+                        <div class="info">
+                          <div class="product">
+                            <div class="text-wrapper-9">{{ item.product_name }}</div>
+                            <div class="text-wrapper-10">Color: {{ item.product_color }}</div>
+                            <button class="button-2 remove-item"> <!-- Nút Remove -->
+                              <div class="content">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976309 1.31658 -0.0976309 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L8.41421 7L13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071C13.3166 14.0976 12.6834 14.0976 12.2929 13.7071L7 8.41421L1.70711 13.7071C1.31658 14.0976 0.683418 14.0976 0.292893 13.7071C-0.0976309 13.3166 -0.0976309 12.6834 0.292893 12.2929L5.58579 7L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683418 0.292893 0.292893Z" fill="#6C7275"/>
+</svg>
+
+                                <div class="get-started-2">Remove</div>
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="info-2">
+                      <div class="quantity-button">
+                        <div class="content-3">
+                          <svg class="decrease-quantity" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.22925 8H12.5626" stroke="#121212" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+ <!-- Nút giảm -->
+                          <div class="get-started-3 quantity">{{ item.quantity }}</div>
+                          <div class="icon-add increase-quantity"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.375 3.33398C8.375 3.12688 8.20711 2.95898 8 2.95898C7.79289 2.95898 7.625 3.12688 7.625 3.33398V7.62567H3.33325C3.12615 7.62567 2.95825 7.79356 2.95825 8.00067C2.95825 8.20778 3.12615 8.37567 3.33325 8.37567H7.625V12.6673C7.625 12.8744 7.79289 13.0423 8 13.0423C8.20711 13.0423 8.375 12.8744 8.375 12.6673V8.37567H12.6666C12.8737 8.37567 13.0416 8.20778 13.0416 8.00067C13.0416 7.79356 12.8737 7.62567 12.6666 7.62567H8.375V3.33398Z" fill="#121212"/>
+</svg>
+</div> <!-- Nút tăng -->
+                        </div>
+                      </div>
+                      <div class="text-wrapper-11">${{ item.price|float|round(2) }}</div>
+                      <div class="text-wrapper-12 item-subtotal">${{ item.subtotal|float|round(2) }}</div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <!-- Nếu giỏ hàng rỗng -->
+                <div class="elements-cart">
+                  <p>Your cart is empty.</p>
+                </div>
+              {% endif %}
+            </div>
+            <div class="elements-cart-2">
+              <div class="text-wrapper-13">Cart summary</div>
+              <div class="content-4">
+                <div class="fields">
+                  <div class="shipping-options">
+                    <div class="elements">
+                      <div class="div-5">
+                        <div class="radio-button">
+                          <div class="radio-button-2"><div class="check"></div></div>
+                          <div class="text-wrapper-14">Free shipping</div>
+                        </div>
+                        <div class="text-wrapper-15">$0.00</div>
+                      </div>
+                    </div>
+  
+            
+                  </div>
+                  <div class="elements-order">
+                    <div class="title-amount-wrapper">
+                      <div class="div-5">
+                        <div class="label-wrapper"><div class="label">Subtotal</div></div>
+                        <div class="value subtotal">${{ subtotal|float|round(2) }}</div> <!-- Subtotal động -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="elements-order-2">
+                    <div class="title-amount-wrapper">
+                      <div class="div-5">
+                        <div class="label-2">Total</div>
+                        <div class="value-2 total">${{ total|float|round(2) }}</div> <!-- Total động -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="show-more-wrapper"><div class="show-more">Checkout</div></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="logo-and-links">
+            <div class="logo-and-slogan">
+              <div class="logo">
+                <p class="element"><span class="text-wrapper-16">V1nTag6 </span> <span class="span">.</span></p>
+              </div>
+              <div class="rectangle"></div>
+              <div class="gift-decoration">Gift &amp; Decoration Store</div>
+            </div>
+            <div class="nav">
+              <div class="text-wrapper-17">Home</div>
+              <div class="text-wrapper-17">Shop</div>
+              <div class="text-wrapper-17">Product</div>
+              <div class="text-wrapper-17">Blog</div>
+              <div class="text-wrapper-17">Contact Us</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <div class="copyright">
+            <p class="text-wrapper-18">Copyright © 2023 3legant. All rights reserved</p>
+            <div class="text-wrapper-19">Privacy Policy</div>
+            <div class="text-wrapper-19">Terms of Use</div>
+          </div>
+          <div class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="2" width="20" height="20" rx="4" stroke="#FEFEFE" stroke-width="1.5"/>
+<circle cx="18" cy="6" r="1" fill="#FEFEFE"/>
+<circle cx="12" cy="12" r="5" stroke="#FEFEFE" stroke-width="1.5"/>
+</svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 3H15C12.2386 3 10 5.23858 10 8V10H6V14H10V21H14V14H18V10H14V8C14 7.44772 14.4477 7 15 7H18V3Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="3" width="20" height="18" rx="4" stroke="#FEFEFE" stroke-width="1.5"/>
+<path d="M10.4472 8.72361L15.2111 11.1056C15.9482 11.4741 15.9482 12.5259 15.2111 12.8944L10.4472 15.2764C9.78231 15.6088 9 15.1253 9 14.382V9.61803C9 8.87465 9.78231 8.39116 10.4472 8.72361Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

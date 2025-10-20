@@ -214,39 +214,275 @@ Bạn thứ 2 bắt đầu làm từ đây
 
 
 class Product:
-    """Class quản lý sản phẩm - để phát triển sau"""
+    """Class quản lý sản phẩm"""
     @staticmethod
     def init_db():
-        """Khởi tạo database cho products - để phát triển sau"""
-        pass
+        """Khởi tạo bảng products trong MySQL"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS products (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    name VARCHAR(255) NOT NULL,
+                    price DECIMAL(10,2) NOT NULL,
+                    color VARCHAR(50),
+                    image_url VARCHAR(255),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            conn.commit()
+            print("Đã khởi tạo bảng products trong MySQL")
+            return True
+        except mysql.connector.Error as e:
+            print(f"Lỗi khởi tạo bảng products: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
     
     @staticmethod
     def get_all_products():
-        """Lấy tất cả sản phẩm - để phát triển sau"""
-        return []
+        """Lấy tất cả sản phẩm"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return []
+        cursor = conn.cursor(dictionary=True)
+        try:
+            cursor.execute('SELECT * FROM products')
+            return cursor.fetchall()
+        finally:
+            cursor.close()
+            conn.close()
     
     @staticmethod
     def get_product_by_id(product_id):
-        """Lấy sản phẩm bằng ID - để phát triển sau"""
-        return None
+        """Lấy sản phẩm bằng ID"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return None
+        cursor = conn.cursor(dictionary=True)
+        try:
+            cursor.execute('SELECT * FROM products WHERE id = %s', (product_id,))
+            return cursor.fetchone()
+        finally:
+            cursor.close()
+            conn.close()
+
+
+class Cart:
+    """Class quản lý giỏ hàng"""
+    @staticmethod
+    def init_db():
+        """Khởi tạo bảng carts trong MySQL"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS carts (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    user_id INT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users(id)
+                )
+            ''')
+            conn.commit()
+            print("Đã khởi tạo bảng carts trong MySQL")
+            return True
+        except mysql.connector.Error as e:
+            print(f"Lỗi khởi tạo bảng carts: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
 
 class CartItem:
-    """Class quản lý giỏ hàng - để phát triển sau"""
+    """Class quản lý item trong giỏ hàng"""
     @staticmethod
-    def add_to_cart(user_id, product_id, quantity=1):
-        """Thêm sản phẩm vào giỏ hàng - để phát triển sau"""
-        return True
+    def init_db():
+        """Khởi tạo bảng cart_items trong MySQL"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS cart_items (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    cart_id INT NOT NULL,
+                    product_id INT NOT NULL,
+                    quantity INT NOT NULL DEFAULT 1,
+                    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (cart_id) REFERENCES carts(id),
+                    FOREIGN KEY (product_id) REFERENCES products(id),
+                    UNIQUE KEY unique_cart_item (cart_id, product_id)
+                )
+            ''')
+            conn.commit()
+            print("Đã khởi tạo bảng cart_items trong MySQL")
+            return True
+        except mysql.connector.Error as e:
+            print(f"Lỗi khởi tạo bảng cart_items: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
     
     @staticmethod
-    def get_cart_items(user_id):
-        """Lấy tất cả sản phẩm trong giỏ hàng - để phát triển sau"""
-        return []
+    def add_to_cart(cart_id, product_id, quantity=1):
+        """Thêm hoặc cập nhật sản phẩm vào giỏ hàng"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('SELECT quantity FROM cart_items WHERE cart_id = %s AND product_id = %s', (cart_id, product_id))
+            existing = cursor.fetchone()
+            if existing:
+                new_quantity = existing[0] + quantity
+                cursor.execute('UPDATE cart_items SET quantity = %s WHERE cart_id = %s AND product_id = %s', (new_quantity, cart_id, product_id))
+            else:
+                cursor.execute('INSERT INTO cart_items (cart_id, product_id, quantity) VALUES (%s, %s, %s)', (cart_id, product_id, quantity))
+            conn.commit()
+            return True
+        except mysql.connector.Error as e:
+            print(f"Lỗi thêm vào giỏ hàng: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
     
     @staticmethod
-    def remove_from_cart(user_id, product_id):
-        """Xóa sản phẩm khỏi giỏ hàng - để phát triển sau"""
-        return True
+    def get_cart_items(cart_id):
+        """Lấy tất cả CartItem của cart"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return []
+        cursor = conn.cursor(dictionary=True)
+        try:
+            cursor.execute('SELECT * FROM cart_items WHERE cart_id = %s', (cart_id,))
+            return cursor.fetchall()
+        finally:
+            cursor.close()
+            conn.close()
+    
+    @staticmethod
+    def remove_from_cart(cart_id, product_id):
+        """Xóa CartItem"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('DELETE FROM cart_items WHERE cart_id = %s AND product_id = %s', (cart_id, product_id))
+            conn.commit()
+            return cursor.rowcount > 0
+        except mysql.connector.Error as e:
+            print(f"Lỗi xóa khỏi giỏ hàng: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
+    
+    @staticmethod
+    def update_quantity(cart_id, product_id, quantity):
+        """Cập nhật quantity của CartItem"""
+        if quantity < 1:
+            return CartItem.remove_from_cart(cart_id, product_id)
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('UPDATE cart_items SET quantity = %s WHERE cart_id = %s AND product_id = %s', (quantity, cart_id, product_id))
+            conn.commit()
+            return cursor.rowcount > 0
+        except mysql.connector.Error as e:
+            print(f"Lỗi cập nhật quantity: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
 
+class Cart:
+    """Class quản lý giỏ hàng tổng thể"""
+    
+    @staticmethod
+    def init_db():
+        """Khởi tạo bảng carts trong MySQL"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return False
+        cursor = conn.cursor()
+        try:
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS carts (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    user_id INT NOT NULL UNIQUE,  # Mỗi user có một cart duy nhất
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users(id)
+                )
+            ''')
+            conn.commit()
+            print("Đã khởi tạo bảng carts trong MySQL")
+            return True
+        except mysql.connector.Error as e:
+            print(f"Lỗi khởi tạo bảng carts: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
+    
+    @staticmethod
+    def get_or_create_cart(user_id):
+        """Lấy hoặc tạo cart cho user"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return None
+        cursor = conn.cursor(dictionary=True)
+        try:
+            cursor.execute('SELECT id FROM carts WHERE user_id = %s', (user_id,))
+            cart = cursor.fetchone()
+            if cart:
+                return cart['id']
+            else:
+                cursor.execute('INSERT INTO carts (user_id) VALUES (%s)', (user_id,))
+                conn.commit()
+                return cursor.lastrowid
+        except mysql.connector.Error as e:
+            print(f"Lỗi lấy/tạo cart: {e}")
+            return None
+        finally:
+            cursor.close()
+            conn.close()
+    
+    @staticmethod
+    def get_cart_subtotal(cart_id):
+        """Tính subtotal của cart"""
+        conn = User.get_db_connection()
+        if conn is None:
+            return 0.0
+        cursor = conn.cursor()
+        try:
+            cursor.execute('''
+                SELECT SUM(p.price * ci.quantity) AS subtotal
+                FROM cart_items ci
+                JOIN products p ON ci.product_id = p.id
+                WHERE ci.cart_id = %s
+            ''', (cart_id,))
+            result = cursor.fetchone()
+            return float(result[0]) if result[0] is not None else 0.0
+        except mysql.connector.Error as e:
+            print(f"Lỗi tính subtotal: {e}")
+            return 0.0
+        finally:
+            cursor.close()
+            conn.close()
 class Order:
     """Class quản lý đơn hàng - để phát triển sau"""
     @staticmethod
