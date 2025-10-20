@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Xử lý form checkout
-    const checkoutForm = document.querySelector('.show-more-wrapper');
+    // Xử lý form checkout - SỬA LẠI PHẦN NÀY
+    const checkoutForm = document.getElementById('checkout-form');
     if (checkoutForm) {
-        checkoutForm.addEventListener('click', function(e) {
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            placeOrder();
+        });
+    }
+
+    // Xử lý nút Place Order riêng biệt
+    const placeOrderBtn = document.querySelector('.show-more-wrapper');
+    if (placeOrderBtn && !checkoutForm) {
+        placeOrderBtn.addEventListener('click', function(e) {
             e.preventDefault();
             placeOrder();
         });
@@ -41,6 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
             removeCartItem(productId, itemElement);
         });
     });
+    // Click vào step Shopping cart để quay lại trang cart
+    const shoppingCartStep = document.querySelector('.frame-wrapper');
+    if (shoppingCartStep) {
+        shoppingCartStep.addEventListener('click', function() {
+            window.location.href = '/cart';
+        });
+        shoppingCartStep.style.cursor = 'pointer';
+    }
 });
 
 function placeOrder() {
