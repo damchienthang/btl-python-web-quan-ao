@@ -10,6 +10,7 @@ with app.app_context():
     Product.init_db()  # Thêm khởi tạo bảng products
     Cart.init_db()  # Thêm khởi tạo bảng carts
     CartItem.init_db()  # Giữ nguyên, nhưng phải sau Cart vì foreign key
+    Order.init_db()
 
 if __name__ == '__main__':
     app.run(debug=True)
