@@ -155,3 +155,33 @@ def check_email():
     
     exists = User.user_exists(email=email)
     return jsonify({'exists': exists})
+
+@auth_bp.route('/change-password', methods=['POST'])
+def change_password():
+    """API đổi mật khẩu"""
+    # Kiểm tra user đã đăng nhập chưa
+    if 'user_id' not in session:
+        return jsonify({'success': False, 'message': 'Please login first'})
+    
+    data = request.get_json()
+    old_password = data.get('old_password')
+    new_password = data.get('new_password')
+    user_id = session['user_id']
+    
+    # Validation
+    if not old_password or not new_password:
+        return jsonify({'success': False, 'message': 'Please fill in all fields'})
+    
+    if len(new_password) < 6:
+        return jsonify({'success': False, 'message': 'New password must be at least 6 characters'})
+    
+    # Lấy thông tin user để kiểm tra mật khẩu cũ
+    user = User.verify_user(session.get('email', ''), old_password)
+    if not user:
+        return jsonify({'success': False, 'message': 'Current password is incorrect'})
+    
+    # Đổi mật khẩu mới
+    if User.change_password(user_id, new_password):
+        return jsonify({'success': True, 'message': 'Password updated successfully'})
+    else:
+        return jsonify({'success': False, 'message': 'Failed to update password'})
