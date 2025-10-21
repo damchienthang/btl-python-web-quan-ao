@@ -109,7 +109,7 @@
           </div>
           <div class="detail">
             <div class="form">
-              <div class="text-wrapper-5">Account Details</div>
+              <div class="text-wrapper-5">Update Account Details</div>
               <div class="div-2">
                 <label class="text-wrapper-6" for="input-1">FIRST NAME *</label>
                 <div class="input"><input class="icon-input" placeholder="First name" type="text" id="input-1" /></div>
@@ -120,7 +120,10 @@
               </div>
               <div class="div-2">
                 <div class="display-name">DISPLAY NAME *</div>
-                <div class="input"><input class="icon-input" placeholder="Display name" type="text" /></div>
+                <div class="input">
+                  <input class="icon-input" placeholder="Display name" type="text" id="display-name-input"
+                    value="{{ session.display_name or session.full_name or '' }}" />
+                </div>
                 <p class="p">This will be how your name will be displayed in the account section and in reviews</p>
               </div>
               <div class="div-2">
@@ -128,6 +131,9 @@
                 <div class="input"><input class="icon-input" placeholder="Email" type="email" id="input-3" /></div>
               </div>
             </div>
+            <button class="show-more-wrapper" id="save-profile-btn">
+              <div class="show-more">Save changes</div>
+            </button>
             <div class="form">
               <div class="text-wrapper-5">Password</div>
               <div class="div-2">
@@ -253,6 +259,52 @@
                     alert('An error occurred while changing password.');
                 });
         });
+
+        // Xử lý lưu thông tin profile
+          document.getElementById('save-profile-btn').addEventListener('click', function () {
+            const firstName = document.getElementById('input-1').value;
+            const lastName = document.getElementById('input-2').value;
+            const displayName = document.getElementById('display-name-input').value;
+            const email = document.getElementById('input-3').value;
+
+            // Kiểm tra validation
+            if (!firstName || !lastName || !displayName || !email) {
+              alert('Please fill in all required fields!');
+              return;
+            }
+
+            // Gửi request đến server để cập nhật profile
+            fetch('{{ url_for("main.update_profile") }}', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                display_name: displayName,
+                email: email
+              })
+            })
+              .then(response => response.json())
+              .then(data => {
+                if (data.success) {
+                  alert('Profile updated successfully!');
+                  // Cập nhật tên hiển thị ngay lập tức
+                  document.getElementById('display-name').textContent = displayName;
+                  // Cập nhật session để khi reload vẫn giữ giá trị mới
+                  if (data.session_updated) {
+                    location.reload(); // Hoặc chỉ reload nếu cần
+                  }
+                } else {
+                  alert('Error: ' + data.message);
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating profile.');
+              });
+          });
     </script>
   </body>
 </html>
