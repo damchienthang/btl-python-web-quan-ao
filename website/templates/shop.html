@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide_product.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_product.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</head>
+<body>
+    
+    <div class="shop-page-01">
+        <div class="navigation-bar">
+            <div class="logo">
+                <div class="legant">
+                    <span>V1nTag6</span>
+                    <span class="span">.</span>
+                </div>
+            </div>
+            <div class="elementsnavigationlink-group">
+                <div class="elementsnavigationlink">
+                    <div class="shop-page-01-button">
+                        <div class="shop-page-01-button">
+                            <div class="get-started">Home</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-page-01-button">
+                    <div class="shop-page-01-button">
+                        <div class="shop-page-01-button">
+                            <a class="get-started" href="/shop" style="text-decoration: none; color: #6c7275">Shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-page-01-button">
+                    <div class="shop-page-01-button">
+                        <div class="shop-page-01-button">
+                            <div class="get-started">Product</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-page-01-button">
+                    <div class="shop-page-01-button">
+                        <div class="shop-page-01-button">
+                            <div class="get-started">Contact Us</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="icons">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.5 18.5L22 22M21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21C16.7467 21 21 16.7467 21 11.5Z" stroke="#141718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3088 18.2988C16.3154 15.6418 13.7536 13.75 10.75 13.75C7.74638 13.75 5.1846 15.6418 4.19117 18.2988M17.3088 18.2988C19.4172 16.4654 20.75 13.7634 20.75 10.75C20.75 5.22715 16.2728 0.75 10.75 0.75C5.22715 0.75 0.75 5.22715 0.75 10.75C0.75 13.7634 2.08285 16.4654 4.19117 18.2988M17.3088 18.2988C15.5531 19.8256 13.2595 20.75 10.75 20.75C8.24052 20.75 5.94694 19.8256 4.19117 18.2988M13.75 7.75C13.75 9.40685 12.4069 10.75 10.75 10.75C9.09315 10.75 7.75 9.40685 7.75 7.75C7.75 6.09315 9.09315 4.75 10.75 4.75C12.4069 4.75 13.75 6.09315 13.75 7.75Z" stroke="#141718" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+
+                
+                <div class="elementsnavigationcart-butto">
+                    <div class="ellipse-parent">
+                        <div class="frame-child">
+                             <div class="frame"><div class="text-wrapper-2">{{ cart_items|length }}</div></div> <!-- Hiển thị số lượng sản phẩm trong giỏ -->
+                        </div>
+                       
+                    </div>
+                    
+                    <svg class="outlineshopping-bag-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 6L9 7C9 8.65685 10.3431 10 12 10C13.6569 10 15 8.65685 15 7V6" stroke="#141718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.6115 3H8.38851C6.43316 3 4.7644 4.41365 4.44294 6.3424L2.77627 16.3424C2.36992 18.7805 4.25009 21 6.72185 21H17.2782C19.7499 21 21.6301 18.7805 21.2237 16.3424L19.5571 6.3424C19.2356 4.41365 17.5669 3 15.6115 3Z" stroke="#141718" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="page-header">
+            <img class="image-placeholder-header" alt="">
+            
+            <div class="title">
+                <div class="breadcrumbslink-group">
+                    <div class="shop-page-01-content">
+                        <div class="get-started">Home</div>
+                        <svg class="iconchevron-right" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.375 0.375L3.375 3.375L0.375 6.375" stroke="#605F5F" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                        
+                    </div>
+                    <div class="shop-page-01-breadcrumbsbutton">
+                        <div class="get-started">Shop</div>
+                    </div>
+                </div>
+                <div class="shop-page">Shop Page</div>
+                <div class="lets-design-the">Let’s design the place you always imagined.</div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="sidebar">
+                <div class="header">
+                    <svg class="ticket-percent-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 7H6M6 7C6 8.65685 7.34315 10 9 10C10.6569 10 12 8.65685 12 7C12 5.34315 10.6569 4 9 4C7.34315 4 6 5.34315 6 7ZM3 17H9M18 17H21M18 17C18 18.6569 16.6569 20 15 20C13.3431 20 12 18.6569 12 17C12 15.3431 13.3431 14 15 14C16.6569 14 18 15.3431 18 17ZM15 7H21" stroke="#141718" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+                    <div class="filter">Filter</div>
+                </div>
+                <div class="elementsfilter-section-list">
+                    <div class="elementsfilter-sectiontitle">
+                        <div class="categories">CATEGORIES</div>
+                    </div>
+                    <div class="content6">
+                        <div class="links">
+                            {% for category in categories %}
+                            <div class="shop-page-01-button">
+                                <a href="/shop?category={{ category.id }}" class="off-storewide" style="color: #6c7275; text-decoration: none;">{{ category.name }}</a>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="price-slider">
+                    <div class="elementsfilter-sectiontitle">
+                        <div class="categories">PRICE</div>
+                    </div>
+                    <form id="price-filter-form">
+                        <div class="elementsfilter-sectionprice">
+                            <div class="checkbox">
+                                <div class="off-storewide">All Price</div>
+                                <input type="radio" name="price_range" value="all" class="ratio-button" checked>
+                            </div>
+                            <div class="checkbox">
+                                <div class="off-storewide">$0.00 - 50</div>
+                                <input type="radio" name="price_range" value="under-50" class="ratio-button">
+                            </div>
+                            <div class="checkbox">
+                                <div class="off-storewide">$50.00 - 100.00</div>
+                                <input type="radio" name="price_range" value="50-100" class="ratio-button">
+                            </div>
+                            <div class="checkbox">
+                                <div class="off-storewide">$100.00 - 200.00</div>
+                                <input type="radio" name="price_range" value="100-200" class="ratio-button">
+                            </div>
+                            <div class="checkbox">
+                                <div class="off-storewide">Above $200.00</div>
+                                <input type="radio" name="price_range" value="above-200" class="ratio-button">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="grids">
+                <div class="toolbar">
+                    <div class="living-room">Products</div>
+                </div>
+                <div class="product" id="product-list">
+                    <div class="list">
+                        {% if products %}
+                            {% set row_count = 0 %}
+                            <div class="social-icon">
+                                {% for product in products %}
+                                    <div class="product-card">
+                                        <div class="elements-card">
+                                            <img class="image-placeholder-icon" src="/static/{{ product.image_url }}" alt="{{ product.name }}">
+                                            <div class="button-hover" data-product-id="{{ product.id }}">
+                                                <button class="show-more add-to-cart-btn">Add to cart</button>
+                                            </div>
+                                            <div class="badges">
+                                                <div class="badge-medium">
+                                                    <b class="new">NEW</b>
+                                                </div>
+                                                <!-- <div class="shop-page-01-badge-medium">
+                                                    <b class="new">-50%</b>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="content8">
+                                            <div class="textprice">
+                                                <div class="ratingrating-group">
+                                                    <div class="star-icon">
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.53834 1.10997C7.70914 0.699319 8.29086 0.699318 8.46166 1.10996L9.99874 4.80556C10.0707 4.97868 10.2336 5.09696 10.4204 5.11194L14.4102 5.4318C14.8535 5.46734 15.0332 6.02059 14.6955 6.30993L11.6557 8.91378C11.5133 9.03576 11.4512 9.22715 11.4947 9.40952L12.4234 13.3028C12.5265 13.7354 12.0559 14.0773 11.6764 13.8455L8.26063 11.7592C8.10062 11.6615 7.89938 11.6615 7.73937 11.7592L4.32363 13.8455C3.94408 14.0773 3.47345 13.7354 3.57665 13.3028L4.50534 9.40952C4.54884 9.22715 4.48665 9.03576 4.34426 8.91378L1.30453 6.30993C0.966758 6.02059 1.14652 5.46734 1.58985 5.4318L5.57955 5.11194C5.76645 5.09696 5.92925 4.97868 6.00126 4.80556L7.53834 1.10997Z" fill="#343839"/>
+</svg>
+
+                                                        
+                                                    </div>
+                                                    <div class="shop-page-01-star-icon">
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.40925 0.307231C6.58005 -0.103415 7.16177 -0.103417 7.33257 0.30723L8.86966 4.00282C8.94166 4.17594 9.10446 4.29423 9.29136 4.30921L13.2811 4.62906C13.7244 4.6646 13.9042 5.21786 13.5664 5.50719L10.5267 8.11105C10.3843 8.23302 10.3221 8.42441 10.3656 8.60679L11.2943 12.5001C11.3975 12.9327 10.9268 13.2746 10.5473 13.0428L7.13154 10.9565C6.97153 10.8587 6.77029 10.8587 6.61028 10.9565L3.19454 13.0428C2.81499 13.2746 2.34436 12.9327 2.44756 12.5001L3.37625 8.60679C3.41975 8.42441 3.35756 8.23302 3.21517 8.11105L0.175437 5.50719C-0.162331 5.21786 0.0174309 4.6646 0.460758 4.62906L4.45046 4.30921C4.63736 4.29423 4.80016 4.17594 4.87217 4.00282L6.40925 0.307231Z" fill="#343839"/>
+</svg>
+
+                                                        
+                                                    </div>
+                                                    <div class="star-icon2">
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.40925 0.307231C6.58005 -0.103415 7.16177 -0.103417 7.33257 0.30723L8.86966 4.00282C8.94166 4.17594 9.10446 4.29423 9.29136 4.30921L13.2811 4.62906C13.7244 4.6646 13.9042 5.21786 13.5664 5.50719L10.5267 8.11105C10.3843 8.23302 10.3221 8.42441 10.3656 8.60679L11.2943 12.5001C11.3975 12.9327 10.9268 13.2746 10.5473 13.0428L7.13154 10.9565C6.97153 10.8587 6.77029 10.8587 6.61028 10.9565L3.19454 13.0428C2.81499 13.2746 2.34436 12.9327 2.44756 12.5001L3.37625 8.60679C3.41975 8.42441 3.35756 8.23302 3.21517 8.11105L0.175437 5.50719C-0.162331 5.21786 0.0174309 4.6646 0.460758 4.62906L4.45046 4.30921C4.63736 4.29423 4.80016 4.17594 4.87217 4.00282L6.40925 0.307231Z" fill="#343839"/>
+</svg>
+
+                                                        
+                                                    </div>
+                                                    <div class="star-icon3">
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.40925 0.307231C6.58005 -0.103415 7.16177 -0.103417 7.33257 0.30723L8.86966 4.00282C8.94166 4.17594 9.10446 4.29423 9.29136 4.30921L13.2811 4.62906C13.7244 4.6646 13.9042 5.21786 13.5664 5.50719L10.5267 8.11105C10.3843 8.23302 10.3221 8.42441 10.3656 8.60679L11.2943 12.5001C11.3975 12.9327 10.9268 13.2746 10.5473 13.0428L7.13154 10.9565C6.97153 10.8587 6.77029 10.8587 6.61028 10.9565L3.19454 13.0428C2.81499 13.2746 2.34436 12.9327 2.44756 12.5001L3.37625 8.60679C3.41975 8.42441 3.35756 8.23302 3.21517 8.11105L0.175437 5.50719C-0.162331 5.21786 0.0174309 4.6646 0.460758 4.62906L4.45046 4.30921C4.63736 4.29423 4.80016 4.17594 4.87217 4.00282L6.40925 0.307231Z" fill="#343839"/>
+</svg>
+
+                                                        
+                                                    </div>
+                                                    <div class="star-icon4">
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.40925 0.307231C6.58005 -0.103415 7.16177 -0.103417 7.33257 0.30723L8.86966 4.00282C8.94166 4.17594 9.10446 4.29423 9.29136 4.30921L13.2811 4.62906C13.7244 4.6646 13.9042 5.21786 13.5664 5.50719L10.5267 8.11105C10.3843 8.23302 10.3221 8.42441 10.3656 8.60679L11.2943 12.5001C11.3975 12.9327 10.9268 13.2746 10.5473 13.0428L7.13154 10.9565C6.97153 10.8587 6.77029 10.8587 6.61028 10.9565L3.19454 13.0428C2.81499 13.2746 2.34436 12.9327 2.44756 12.5001L3.37625 8.60679C3.41975 8.42441 3.35756 8.23302 3.21517 8.11105L0.175437 5.50719C-0.162331 5.21786 0.0174309 4.6646 0.460758 4.62906L4.45046 4.30921C4.63736 4.29423 4.80016 4.17594 4.87217 4.00282L6.40925 0.307231Z" fill="#343839"/>
+</svg>
+
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="loveseat-sofa">{{ product.name }}</div>
+                                                <div class="price">
+                                                    <div class="off-storewide">${{ product.price }}</div>
+                                                    <!-- <div class="shop-page-01-div">${{ product.price * 2 }}</div> Giả sử giá gốc là gấp đôi, điều chỉnh nếu cần -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% set row_count = row_count + 1 %}
+                                    {% if row_count % 3 == 0 %}
+                                        </div><div class="social-icon"> <!-- Bắt đầu row mới sau mỗi 3 sản phẩm -->
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>Không có sản phẩm nào!</p>
+                        {% endif %}
+                    </div>
+                    <!-- <div class="button13">
+                        <div class="show-more">Show more</div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div id="toast"></div>
+        
+        <div class="footer">
+            <div class="footer-content">
+                <div class="logo-and-links">
+                    <div class="logo-and-slogan">
+                        <div class="logo">
+                            <div class="legant">
+                                <span>V1nTag6</span>
+                                <span class="span">.</span>
+                            </div>
+                        </div>
+                        <div class="logo-and-slogan-child">
+                        </div>
+                        <div class="gift-decoration">Gift & Decoration Store</div>
+                    </div>
+                    <div class="nav">
+                        <div class="home">Home</div>
+                        <div class="home">Shop</div>
+                        <div class="home">Product</div>
+                        <div class="home">Blog</div>
+                        <div class="home">Contact Us</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <div class="copyright">
+                    <div class="copyright-2023">Copyright © 2023 3legant. All rights reserved</div>
+                    <div class="privacy-policy">Privacy Policy</div>
+                    <div class="privacy-policy">Terms of Use</div>
+                </div>
+                <div class="social-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="2" width="20" height="20" rx="4" stroke="#FEFEFE" stroke-width="1.5"/>
+<circle cx="18" cy="6" r="1" fill="#FEFEFE"/>
+<circle cx="12" cy="12" r="5" stroke="#FEFEFE" stroke-width="1.5"/>
+</svg>
+
+                    
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 3H15C12.2386 3 10 5.23858 10 8V10H6V14H10V21H14V14H18V10H14V8C14 7.44772 14.4477 7 15 7H18V3Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="3" width="20" height="18" rx="4" stroke="#FEFEFE" stroke-width="1.5"/>
+<path d="M10.4472 8.72361L15.2111 11.1056C15.9482 11.4741 15.9482 12.5259 15.2111 12.8944L10.4472 15.2764C9.78231 15.6088 9 15.1253 9 14.382V9.61803C9 8.87465 9.78231 8.39116 10.4472 8.72361Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

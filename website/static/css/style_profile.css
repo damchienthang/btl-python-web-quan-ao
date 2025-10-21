@@ -1,0 +1,715 @@
+.my-account {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.my-account .navigation-bar {
+  display: flex;
+  width: 1440px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 160px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.my-account .logo {
+  position: relative;
+  width: 105px;
+  height: 24px;
+}
+
+.my-account .element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: transparent;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.my-account .text-wrapper {
+  color: #000000;
+}
+
+.my-account .span {
+  color: #6c7174;
+}
+
+.my-account .elements-navigation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .button-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  flex: 0 0 auto;
+  border: 0px none;
+  border-color: var(--neutral-07100);
+}
+
+.my-account .content {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .get-started {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--button-xsmall-font-family);
+  font-weight: var(--button-xsmall-font-weight);
+  color: var(--neutral-07100);
+  font-size: var(--button-xsmall-font-size);
+  letter-spacing: var(--button-xsmall-letter-spacing);
+  line-height: var(--button-xsmall-line-height);
+  white-space: nowrap;
+  font-style: var(--button-xsmall-font-style);
+}
+
+.my-account .div-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .content-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  flex: 0 0 auto;
+  border: 0px none;
+  border-color: var(--neutral-04100);
+}
+
+.my-account .div {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--button-xsmall-font-family);
+  font-weight: var(--button-xsmall-font-weight);
+  color: var(--neutral-04100);
+  font-size: var(--button-xsmall-font-size);
+  letter-spacing: var(--button-xsmall-letter-spacing);
+  line-height: var(--button-xsmall-line-height);
+  white-space: nowrap;
+  font-style: var(--button-xsmall-font-style);
+}
+
+.my-account .icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .img {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.my-account .elements-navigation-2 {
+  position: relative;
+  width: 50px;
+  height: 28px;
+}
+
+.my-account .frame {
+  position: absolute;
+  top: 4px;
+  left: 30px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: var(--neutral-07100);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.my-account .text-wrapper-2 {
+  height: 10px;
+  margin-right: 6px;
+  width: 8px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 10px;
+  white-space: nowrap;
+}
+
+.my-account .outline-shopping-bag {
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 24px;
+  height: 24px;
+}
+
+.my-account .content-2 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 160px 80px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.my-account .title {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 80px 0px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--headline-3-font-family);
+  font-weight: var(--headline-3-font-weight);
+  color: #000000;
+  font-size: var(--headline-3-font-size);
+  letter-spacing: var(--headline-3-letter-spacing);
+  line-height: var(--headline-3-line-height);
+  white-space: nowrap;
+  font-style: var(--headline-3-font-style);
+}
+
+.my-account .account-section {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 7px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .MENU {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 16px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--neutral-02100);
+  border-radius: 8px;
+}
+
+.my-account .frame-2 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .elements-menu-avatar {
+  position: relative;
+  width: 82px;
+  height: 82px;
+}
+
+.my-account .avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background-color: var(--black-300);
+  border-radius: 93px;
+  background-image: url(../img/avt.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.my-account .icon-box {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px;
+  position: absolute;
+  top: 52px;
+  left: 50px;
+  background-color: var(--neutral-07100);
+  border-radius: 125px;
+  border: 1.5px solid;
+  border-color: #ffffff;
+}
+
+.my-account .outline-camera {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.my-account .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  font-family: var(--body-1-semi-font-family);
+  font-weight: var(--body-1-semi-font-weight);
+  color: #000000;
+  font-size: var(--body-1-semi-font-size);
+  letter-spacing: var(--body-1-semi-letter-spacing);
+  line-height: var(--body-1-semi-line-height);
+  white-space: nowrap;
+  font-style: var(--body-1-semi-font-style);
+}
+
+.my-account .frame-3 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .elements {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0px;
+  position: relative;
+  flex: 0 0 auto;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--neutral-07100);
+}
+
+.my-account .menu-item {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: var(--body-2-semi-font-family);
+  font-weight: var(--body-2-semi-font-weight);
+  color: var(--neutral-07100);
+  font-size: var(--body-2-semi-font-size);
+  letter-spacing: var(--body-2-semi-letter-spacing);
+  line-height: var(--body-2-semi-line-height);
+  font-style: var(--body-2-semi-font-style);
+}
+
+.my-account .menu-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0px;
+  position: relative;
+  flex: 0 0 auto;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--transparent);
+}
+
+.my-account .menu-item-2 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: var(--body-2-semi-font-family);
+  font-weight: var(--body-2-semi-font-weight);
+  color: var(--red);
+  font-size: var(--body-2-semi-font-size);
+  letter-spacing: var(--body-2-semi-letter-spacing);
+  line-height: var(--body-2-semi-line-height);
+  font-style: var(--body-2-semi-font-style);
+}
+
+.my-account .detail {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 0px 72px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .form {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+.my-account .div-2 {
+  display: flex;
+  flex-direction: column;
+  width: 707px;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--hairline-2-font-family);
+  font-weight: var(--hairline-2-font-weight);
+  color: var(--neutral-04100);
+  font-size: var(--hairline-2-font-size);
+  letter-spacing: var(--hairline-2-letter-spacing);
+  line-height: var(--hairline-2-line-height);
+  white-space: nowrap;
+  font-style: var(--hairline-2-font-style);
+}
+
+.my-account .input {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--black-300);
+}
+
+.my-account .icon-input {
+  position: relative;
+  flex-grow: 1;
+  border: none;
+  background: none;
+  outline: none;
+  flex: 1;
+  margin-top: -1.00px;
+  font-family: var(--body-2-font-family);
+  font-weight: var(--body-2-font-weight);
+  color: #000000;
+  font-size: var(--body-2-font-size);
+  letter-spacing: var(--body-2-letter-spacing);
+  line-height: var(--body-2-line-height);
+  font-style: var(--body-2-font-style);
+  padding: 0;
+}
+
+.my-account .display-name {
+  position: relative;
+  width: 134.89px;
+  margin-top: -1.00px;
+  font-family: var(--hairline-2-font-family);
+  font-weight: var(--hairline-2-font-weight);
+  color: var(--neutral-04100);
+  font-size: var(--hairline-2-font-size);
+  letter-spacing: var(--hairline-2-letter-spacing);
+  line-height: var(--hairline-2-line-height);
+  font-style: var(--hairline-2-font-style);
+}
+
+.my-account .p {
+  position: relative;
+  width: fit-content;
+  font-family: "Inter-Italic", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--neutral-04100);
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.my-account .your-email-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.my-account .your-email {
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  font-family: var(--body-2-font-family);
+  font-weight: var(--body-2-font-weight);
+  color: #6c7174;
+  font-size: var(--body-2-font-size);
+  letter-spacing: var(--body-2-letter-spacing);
+  line-height: var(--body-2-line-height);
+  font-style: var(--body-2-font-style);
+}
+
+.my-account .repeat-NEW-PASSWORD {
+  position: relative;
+  width: 156.75px;
+  margin-top: -1.00px;
+  font-family: var(--hairline-2-font-family);
+  font-weight: var(--hairline-2-font-weight);
+  color: var(--neutral-04100);
+  font-size: var(--hairline-2-font-size);
+  letter-spacing: var(--hairline-2-letter-spacing);
+  line-height: var(--hairline-2-line-height);
+  font-style: var(--hairline-2-font-style);
+}
+
+.my-account .show-more-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 40px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--neutral-07100);
+  border-radius: 8px;
+}
+
+.my-account .show-more {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--button-s-font-family);
+  font-weight: var(--button-s-font-weight);
+  color: #ffffff;
+  font-size: var(--button-s-font-size);
+  text-align: center;
+  letter-spacing: var(--button-s-letter-spacing);
+  line-height: var(--button-s-line-height);
+  white-space: nowrap;
+  font-style: var(--button-s-font-style);
+}
+
+.my-account .footer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 49px;
+  padding: 80px 160px 32px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--neutral-07100);
+}
+
+.my-account .footer-content {
+  position: relative;
+  width: 1120px;
+  height: 32px;
+}
+
+.my-account .logo-and-links {
+  width: 1120px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.my-account .logo-and-slogan {
+  width: 544px;
+  gap: 32px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.my-account .text-wrapper-7 {
+  color: #ffffff;
+}
+
+.my-account .rectangle {
+  position: relative;
+  width: 1px;
+  height: 24px;
+  background-color: var(--neutral-04100);
+}
+
+.my-account .gift-decoration {
+  position: relative;
+  width: 350px;
+  font-family: var(--caption-1-font-family);
+  font-weight: var(--caption-1-font-weight);
+  color: var(--neutral-03100);
+  font-size: var(--caption-1-font-size);
+  letter-spacing: var(--caption-1-letter-spacing);
+  line-height: var(--caption-1-line-height);
+  font-style: var(--caption-1-font-style);
+}
+
+.my-account .nav {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 40px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .text-wrapper-8 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--caption-1-font-family);
+  font-weight: var(--caption-1-font-weight);
+  color: var(--neutral-01100);
+  font-size: var(--caption-1-font-size);
+  letter-spacing: var(--caption-1-letter-spacing);
+  line-height: var(--caption-1-line-height);
+  white-space: nowrap;
+  font-style: var(--caption-1-font-style);
+}
+
+.my-account .bottom-bar {
+  display: flex;
+  width: 1118px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 0px;
+  position: relative;
+  flex: 0 0 auto;
+  border-top-width: 0.5px;
+  border-top-style: solid;
+  border-color: var(--neutral-04100);
+}
+
+.my-account .copyright {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 28px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .text-wrapper-9 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--caption-2-font-family);
+  font-weight: var(--caption-2-font-weight);
+  color: var(--neutral-03100);
+  font-size: var(--caption-2-font-size);
+  letter-spacing: var(--caption-2-letter-spacing);
+  line-height: var(--caption-2-line-height);
+  white-space: nowrap;
+  font-style: var(--caption-2-font-style);
+}
+
+.my-account .text-wrapper-10 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--caption-2-bold-font-family);
+  font-weight: var(--caption-2-bold-font-weight);
+  color: var(--neutral-01100);
+  font-size: var(--caption-2-bold-font-size);
+  letter-spacing: var(--caption-2-bold-letter-spacing);
+  line-height: var(--caption-2-bold-line-height);
+  white-space: nowrap;
+  font-style: var(--caption-2-bold-font-style);
+}
+
+.my-account .social-icon {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.my-account .vector {
+  position: absolute;
+  width: 89.58%;
+  height: 89.58%;
+  top: 5.21%;
+  left: 5.21%;
+  border-radius: 4px;
+  border: 1.5px solid;
+  border-color: var(--neutral-01100);
+}
+
+.my-account .vector-2 {
+  position: absolute;
+  width: 8.33%;
+  height: 8.33%;
+  top: 20.83%;
+  left: 70.83%;
+  background-color: var(--neutral-01100);
+  border-radius: 1px;
+}
+
+.my-account .vector-3 {
+  position: absolute;
+  width: 47.92%;
+  height: 47.92%;
+  top: 26.04%;
+  left: 26.04%;
+  border-radius: 5.75px;
+  border: 1.5px solid;
+  border-color: var(--neutral-01100);
+}

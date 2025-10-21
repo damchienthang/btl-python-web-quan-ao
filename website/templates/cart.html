@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals_cart.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide_cart.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_cart.css') }}" />
     <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="cart">
       <div class="navigation-bar">
         <div class="logo">
@@ -22,7 +24,7 @@
           </button>
           <div class="div-wrapper">
             <button class="content-wrapper">
-              <div class="content"><div class="div">Shop</div></div>
+              <a class="content" href="/shop" style="text-decoration: none; color: #6c7275"><div class="div">Shop</div></a>
             </button>
           </div>
           <div class="div-wrapper">
@@ -30,11 +32,9 @@
               <div class="content"><div class="div">Product</div></div>
             </button>
           </div>
-          <button class="button-wrapper">
             <button class="content-wrapper">
               <div class="content"><div class="div">Contact Us</div></div>
             </button>
-          </button>
         </div>
         <div class="icons">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,164 +73,193 @@
                 <div class="frame-3"><div class="text-wrapper-4">1</div></div>
                 <div class="text-wrapper-5">Shopping cart</div>
               </div>
-            </div>
-            <div class="process-2">
-              <div class="frame-2">
-                <div class="frame-4"><div class="text-wrapper-6">2</div></div>
-                <div class="text-wrapper-7">Checkout details</div>
-              </div>
-            </div>
-            <div class="process-2">
-              <div class="frame-2">
-                <div class="frame-4"><div class="text-wrapper-4">3</div></div>
-                <div class="text-wrapper-7">Order complete</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="div-3">
-          <div class="div-4">
-            <div class="div-3">
-              <div class="table-header">
-                <div class="text-wrapper-8">Product</div>
-                <div class="titles">
-                  <div class="text-wrapper-8">Quantity</div>
-                  <div class="text-wrapper-8">Price</div>
-                  <div class="text-wrapper-8">Subtotal</div>
-                </div>
-              </div>
-              <!-- Phần động: Loop qua cart_items từ DB -->
-              {% if cart_items %}
-                {% for item in cart_items %}
-                  <div class="elements-cart" data-item-id="{{ item.product_id }}"> <!-- Thêm data-item-id để JS dễ lấy -->
-                    <div class="cart-item">
-                      <div class="content-2">
-                        <!-- Hình ảnh sản phẩm từ DB -->
-                        <img class="image-placeholder" src="{{ item.image_url }}" alt="{{ item.product_name }}" />
-                        <div class="info">
-                          <div class="product">
-                            <div class="text-wrapper-9">{{ item.product_name }}</div>
-                            <div class="text-wrapper-10">Color: {{ item.product_color }}</div>
-                            <button class="button-2 remove-item"> <!-- Nút Remove -->
-                              <div class="content">
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976309 1.31658 -0.0976309 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L8.41421 7L13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071C13.3166 14.0976 12.6834 14.0976 12.2929 13.7071L7 8.41421L1.70711 13.7071C1.31658 14.0976 0.683418 14.0976 0.292893 13.7071C-0.0976309 13.3166 -0.0976309 12.6834 0.292893 12.2929L5.58579 7L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683418 0.292893 0.292893Z" fill="#6C7275"/>
-</svg>
 
-                                <div class="get-started-2">Remove</div>
-                              </div>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <div class="info-2">
-                      <div class="quantity-button">
-                        <div class="content-3">
-                          <svg class="decrease-quantity" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.22925 8H12.5626" stroke="#121212" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
- <!-- Nút giảm -->
-                          <div class="get-started-3 quantity">{{ item.quantity }}</div>
-                          <div class="icon-add increase-quantity"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.375 3.33398C8.375 3.12688 8.20711 2.95898 8 2.95898C7.79289 2.95898 7.625 3.12688 7.625 3.33398V7.62567H3.33325C3.12615 7.62567 2.95825 7.79356 2.95825 8.00067C2.95825 8.20778 3.12615 8.37567 3.33325 8.37567H7.625V12.6673C7.625 12.8744 7.79289 13.0423 8 13.0423C8.20711 13.0423 8.375 12.8744 8.375 12.6673V8.37567H12.6666C12.8737 8.37567 13.0416 8.20778 13.0416 8.00067C13.0416 7.79356 12.8737 7.62567 12.6666 7.62567H8.375V3.33398Z" fill="#121212"/>
-</svg>
-</div> <!-- Nút tăng -->
+                    <div class="process-2">
+                        <div class="frame-2">
+                            <div class="frame-4">
+                                <div class="text-wrapper-6">2</div>
+                            </div>
+                            <div class="text-wrapper-7">Checkout details</div>
                         </div>
-                      </div>
-                      <div class="text-wrapper-11">${{ item.price|float|round(2) }}</div>
-                      <div class="text-wrapper-12 item-subtotal">${{ item.subtotal|float|round(2) }}</div>
                     </div>
-                  </div>
-                {% endfor %}
-              {% else %}
-                <!-- Nếu giỏ hàng rỗng -->
-                <div class="elements-cart">
-                  <p>Your cart is empty.</p>
+                    <div class="process-2">
+                        <div class="frame-2">
+                            <div class="frame-4">
+                                <div class="text-wrapper-4">3</div>
+                            </div>
+                            <div class="text-wrapper-7">Order complete</div>
+                        </div>
+                    </div>
                 </div>
-              {% endif %}
             </div>
-            <div class="elements-cart-2">
-              <div class="text-wrapper-13">Cart summary</div>
-              <div class="content-4">
-                <div class="fields">
-                  <div class="shipping-options">
-                    <div class="elements">
-                      <div class="div-5">
-                        <div class="radio-button">
-                          <div class="radio-button-2"><div class="check"></div></div>
-                          <div class="text-wrapper-14">Free shipping</div>
+            <div class="div-3">
+                <div class="div-4">
+                    <div class="div-3">
+                        <div class="table-header">
+                            <div class="text-wrapper-8">Product</div>
+                            <div class="titles">
+                                <div class="text-wrapper-8">Quantity</div>
+                                <div class="text-wrapper-8">Price</div>
+                                <div class="text-wrapper-8">Subtotal</div>
+                            </div>
                         </div>
-                        <div class="text-wrapper-15">$0.00</div>
-                      </div>
+                        <!-- Phần động: Loop qua cart_items từ DB -->
+                        {% if cart_items %}
+                        {% for item in cart_items %}
+                        <div class="elements-cart" data-item-id="{{ item.product_id }}">
+                            <!-- Thêm data-item-id để JS dễ lấy -->
+                            <div class="cart-item">
+                                <div class="content-2">
+                                    <!-- Hình ảnh sản phẩm từ DB -->
+                                    <img class="image-placeholder" src="{{ item.image_url }}"
+                                        alt="{{ item.product_name }}" />
+                                    <div class="info">
+                                        <div class="product">
+                                            <div class="text-wrapper-9">{{ item.product_name }}</div>
+                                            <div class="text-wrapper-10">Color: {{ item.product_color }}</div>
+                                            <button class="button-2 remove-item"> <!-- Nút Remove -->
+                                                <div class="content">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M0.292893 0.292893C0.683417 -0.0976309 1.31658 -0.0976309 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L8.41421 7L13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071C13.3166 14.0976 12.6834 14.0976 12.2929 13.7071L7 8.41421L1.70711 13.7071C1.31658 14.0976 0.683418 14.0976 0.292893 13.7071C-0.0976309 13.3166 -0.0976309 12.6834 0.292893 12.2929L5.58579 7L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683418 0.292893 0.292893Z"
+                                                            fill="#6C7275" />
+                                                    </svg>
+
+                                                    <div class="get-started-2">Remove</div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-2">
+                                <div class="quantity-button">
+                                    <div class="content-3">
+                                        <svg class="decrease-quantity" width="16" height="16" viewBox="0 0 16 16"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.22925 8H12.5626" stroke="#121212" stroke-width="0.75"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <!-- Nút giảm -->
+                                        <div class="get-started-3 quantity">{{ item.quantity }}</div>
+                                        <div class="icon-add increase-quantity"><svg width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.375 3.33398C8.375 3.12688 8.20711 2.95898 8 2.95898C7.79289 2.95898 7.625 3.12688 7.625 3.33398V7.62567H3.33325C3.12615 7.62567 2.95825 7.79356 2.95825 8.00067C2.95825 8.20778 3.12615 8.37567 3.33325 8.37567H7.625V12.6673C7.625 12.8744 7.79289 13.0423 8 13.0423C8.20711 13.0423 8.375 12.8744 8.375 12.6673V8.37567H12.6666C12.8737 8.37567 13.0416 8.20778 13.0416 8.00067C13.0416 7.79356 12.8737 7.62567 12.6666 7.62567H8.375V3.33398Z"
+                                                    fill="#121212" />
+                                            </svg>
+                                        </div> <!-- Nút tăng -->
+                                    </div>
+                                </div>
+                                <div class="text-wrapper-11">${{ item.price|float|round(2) }}</div>
+                                <div class="text-wrapper-12 item-subtotal">${{ item.subtotal|float|round(2) }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <!-- Nếu giỏ hàng rỗng -->
+                        <div class="elements-cart">
+                            <p>Your cart is empty.</p>
+                        </div>
+                        {% endif %}
                     </div>
-  
-            
-                  </div>
-                  <div class="elements-order">
-                    <div class="title-amount-wrapper">
-                      <div class="div-5">
-                        <div class="label-wrapper"><div class="label">Subtotal</div></div>
-                        <div class="value subtotal">${{ subtotal|float|round(2) }}</div> <!-- Subtotal động -->
-                      </div>
+                    <div class="elements-cart-2">
+                        <div class="text-wrapper-13">Cart summary</div>
+                        <div class="content-4">
+                            <div class="fields">
+                                <div class="shipping-options">
+                                    <div class="elements">
+                                        <div class="div-5">
+                                            <div class="radio-button">
+                                                <div class="radio-button-2">
+                                                    <div class="check"></div>
+                                                </div>
+                                                <div class="text-wrapper-14">Free shipping</div>
+                                            </div>
+                                            <div class="text-wrapper-15">$0.00</div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="elements-order">
+                                    <div class="title-amount-wrapper">
+                                        <div class="div-5">
+                                            <div class="label-wrapper">
+                                                <div class="label">Subtotal</div>
+                                            </div>
+                                            <div class="value subtotal">${{ subtotal|float|round(2) }}</div>
+                                            <!-- Subtotal động -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elements-order-2">
+                                    <div class="title-amount-wrapper">
+                                        <div class="div-5">
+                                            <div class="label-2">Total</div>
+                                            <div class="value-2 total">${{ total|float|round(2) }}</div>
+                                            <!-- Total động -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('main.checkout') }}" class="show-more-wrapper">
+                                <div class="show-more">Checkout</div>
+                            </a>
+                        </div>
                     </div>
-                  </div>
-                  <div class="elements-order-2">
-                    <div class="title-amount-wrapper">
-                      <div class="div-5">
-                        <div class="label-2">Total</div>
-                        <div class="value-2 total">${{ total|float|round(2) }}</div> <!-- Total động -->
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <button class="show-more-wrapper"><div class="show-more">Checkout</div></button>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <footer class="footer">
-        <div class="footer-content">
-          <div class="logo-and-links">
-            <div class="logo-and-slogan">
-              <div class="logo">
-                <p class="element"><span class="text-wrapper-16">V1nTag6 </span> <span class="span">.</span></p>
-              </div>
-              <div class="rectangle"></div>
-              <div class="gift-decoration">Gift &amp; Decoration Store</div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="logo-and-links">
+                    <div class="logo-and-slogan">
+                        <div class="logo">
+                            <p class="element"><span class="text-wrapper-16">V1nTag6 </span> <span class="span">.</span>
+                            </p>
+                        </div>
+                        <div class="rectangle"></div>
+                        <div class="gift-decoration">Gift &amp; Decoration Store</div>
+                    </div>
+                    <div class="nav">
+                        <div class="text-wrapper-17">Home</div>
+                        <div class="text-wrapper-17">Shop</div>
+                        <div class="text-wrapper-17">Product</div>
+                        <div class="text-wrapper-17">Blog</div>
+                        <div class="text-wrapper-17">Contact Us</div>
+                    </div>
+                </div>
             </div>
-            <div class="nav">
-              <div class="text-wrapper-17">Home</div>
-              <div class="text-wrapper-17">Shop</div>
-              <div class="text-wrapper-17">Product</div>
-              <div class="text-wrapper-17">Blog</div>
-              <div class="text-wrapper-17">Contact Us</div>
+            <div class="bottom-bar">
+                <div class="copyright">
+                    <p class="text-wrapper-18">Copyright © 2025 V1nTag6. All rights reserved</p>
+                    <div class="text-wrapper-19">Privacy Policy</div>
+                    <div class="text-wrapper-19">Terms of Use</div>
+                </div>
+                <div class="social-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="20" height="20" rx="4" stroke="#FEFEFE" stroke-width="1.5" />
+                        <circle cx="18" cy="6" r="1" fill="#FEFEFE" />
+                        <circle cx="12" cy="12" r="5" stroke="#FEFEFE" stroke-width="1.5" />
+                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18 3H15C12.2386 3 10 5.23858 10 8V10H6V14H10V21H14V14H18V10H14V8C14 7.44772 14.4477 7 15 7H18V3Z"
+                            stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="18" rx="4" stroke="#FEFEFE" stroke-width="1.5" />
+                        <path
+                            d="M10.4472 8.72361L15.2111 11.1056C15.9482 11.4741 15.9482 12.5259 15.2111 12.8944L10.4472 15.2764C9.78231 15.6088 9 15.1253 9 14.382V9.61803C9 8.87465 9.78231 8.39116 10.4472 8.72361Z"
+                            stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="bottom-bar">
-          <div class="copyright">
-            <p class="text-wrapper-18">Copyright © 2023 3legant. All rights reserved</p>
-            <div class="text-wrapper-19">Privacy Policy</div>
-            <div class="text-wrapper-19">Terms of Use</div>
-          </div>
-          <div class="social-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="2" y="2" width="20" height="20" rx="4" stroke="#FEFEFE" stroke-width="1.5"/>
-<circle cx="18" cy="6" r="1" fill="#FEFEFE"/>
-<circle cx="12" cy="12" r="5" stroke="#FEFEFE" stroke-width="1.5"/>
-</svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18 3H15C12.2386 3 10 5.23858 10 8V10H6V14H10V21H14V14H18V10H14V8C14 7.44772 14.4477 7 15 7H18V3Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="2" y="3" width="20" height="18" rx="4" stroke="#FEFEFE" stroke-width="1.5"/>
-<path d="M10.4472 8.72361L15.2111 11.1056C15.9482 11.4741 15.9482 12.5259 15.2111 12.8944L10.4472 15.2764C9.78231 15.6088 9 15.1253 9 14.382V9.61803C9 8.87465 9.78231 8.39116 10.4472 8.72361Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round"/>
-</svg>
-          </div>
-        </div>
-      </footer>
+        </footer>
     </div>
-  </body>
+</body>
+
 </html>
