@@ -215,18 +215,18 @@ def update_profile():
         
         cursor = conn.cursor()
         
-        # CẬP NHẬT QUAN TRỌNG: Dùng display_name cho cả full_name
-        display_name = data['display_name']
+        # CẬP NHẬT QUAN TRỌNG:
+        full_name = f"{data['first_name']} {data['last_name']}"
         cursor.execute("""
             UPDATE users 
             SET full_name = %s, email = %s 
             WHERE id = %s
-        """, (display_name, data['email'], user_id))
+        """, (full_name, data['email'], user_id))
         conn.commit()
         
         # CẬP NHẬT SESSION
-        session['full_name'] = display_name
-        session['display_name'] = display_name
+        session['full_name'] = data['first_name'] + ' ' + data['last_name']
+        session['display_name'] = data['display_name']
         session['first_name'] = data['first_name']
         session['last_name'] = data['last_name']
         session['email'] = data['email']
