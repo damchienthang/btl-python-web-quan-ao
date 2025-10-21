@@ -1,5 +1,5 @@
 from website import create_app
-from website.models import User, Cart, CartItem, Product
+from website.models import User, Cart, CartItem, Product, Order
 
 # Khởi tạo ứng dụng
 app = create_app()
