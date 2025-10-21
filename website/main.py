@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify
-from website.models import User, CartItem, Cart, Product
+from website.models import User, CartItem, Cart, Product, Order
 
 main_bp = Blueprint('main', __name__)
 
@@ -18,72 +18,6 @@ def base():
                          full_name=session.get('full_name'), 
                          username=session.get('username'),
                          email=session.get('email'))
-
-@main_bp.route('/profile')
-def profile():
-    """Trang thông tin cá nhân"""
-    if 'user_id' not in session:
-        return redirect(url_for('auth.login'))
-    
-    return render_template('profile.html',
-                         full_name=session.get('full_name'),
-                         username=session.get('username'),
-                         email=session.get('email'))
-
-@main_bp.route('/update_profile', methods=['POST'])
-def update_profile():
-    """Cập nhật thông tin cá nhân"""
-    if 'user_id' not in session:
-        return jsonify({'success': False, 'message': 'Please login!'})
-    
-    full_name = request.form.get('full_name', '').strip()
-    email = request.form.get('email', '').strip()
-    
-    # Validation
-    if not email:
-        return jsonify({'success': False, 'message': 'Please enter your email!'})
-    
-    if '@' not in email or '.' not in email:
-        return jsonify({'success': False, 'message': 'Invalid email format!'})
-    
-    # Cập nhật thông tin
-    if User.update_user(session['user_id'], full_name, email):
-        session['full_name'] = full_name
-        session['email'] = email
-        return jsonify({'success': True, 'message': 'Profile updated successfully!'})
-    else:
-        return jsonify({'success': False, 'message': 'Email is already used by another user!'})
-
-@main_bp.route('/change_password', methods=['POST'])
-def change_password():
-    """Đổi mật khẩu"""
-    if 'user_id' not in session:
-        return jsonify({'success': False, 'message': 'Please login!'})
-    
-    current_password = request.form.get('current_password', '').strip()
-    new_password = request.form.get('new_password', '').strip()
-    confirm_password = request.form.get('confirm_password', '').strip()
-    
-    # Validation
-    if not current_password or not new_password or not confirm_password:
-        return jsonify({'success': False, 'message': 'Please fill in all fields!'})
-    
-    if new_password != confirm_password:
-        return jsonify({'success': False, 'message': 'Passwords do not match!'})
-    
-    if len(new_password) < 6:
-        return jsonify({'success': False, 'message': 'New password must be at least 6 characters!'})
-    
-    # Kiểm tra mật khẩu hiện tại
-    user = User.verify_user(session['username'], current_password)
-    if not user:
-        return jsonify({'success': False, 'message': 'Current password is incorrect!'})
-    
-    # Đổi mật khẩu
-    if User.change_password(session['user_id'], new_password):
-        return jsonify({'success': True, 'message': 'Password changed successfully!'})
-    else:
-        return jsonify({'success': False, 'message': 'Error changing password!'})
 
 @main_bp.route('/cart')
 def cart():
@@ -238,7 +172,8 @@ def place_order():
             'success': True, 
             'message': 'Order placed successfully!',
             'order_id': order_id,
-            'order_details': customer_info
+            'order_details': customer_info,
+            'redirect_url': url_for('main.order_complete', order_id=order_id)
         })
         
     except Exception as e:
@@ -253,3 +188,56 @@ def order_complete():
     
     return render_template('complete.html')
 
+@main_bp.route('/profile')
+def profile():
+    """Trang thông tin cá nhân"""
+    if 'user_id' not in session:
+        return redirect(url_for('auth.login'))
+
+    return render_template('profile.html',
+                         full_name=session.get('full_name'),
+                         username=session.get('username'),
+                         email=session.get('email'))
+
+@main_bp.route('/update_profile', methods=['POST'])
+def update_profile():
+    if 'user_id' not in session:
+        return jsonify({'success': False, 'message': 'User not logged in'})
+    
+    data = request.get_json()
+    user_id = session['user_id']
+    
+    try:
+        # Cập nhật trong database - sử dụng User.get_db_connection()
+        conn = User.get_db_connection()
+        if conn is None:
+            return jsonify({'success': False, 'message': 'Database connection error'})
+        
+        cursor = conn.cursor()
+        
+        # CẬP NHẬT QUAN TRỌNG: Dùng display_name cho cả full_name
+        display_name = data['display_name']
+        cursor.execute("""
+            UPDATE users 
+            SET full_name = %s, email = %s 
+            WHERE id = %s
+        """, (display_name, data['email'], user_id))
+        conn.commit()
+        
+        # CẬP NHẬT SESSION
+        session['full_name'] = display_name
+        session['display_name'] = display_name
+        session['first_name'] = data['first_name']
+        session['last_name'] = data['last_name']
+        session['email'] = data['email']
+        
+        cursor.close()
+        conn.close()
+        
+        return jsonify({'success': True, 'message': 'Profile updated successfully', 'session_updated': True})
+        
+    except Exception as e:
+        if 'conn' in locals():
+            conn.rollback()
+            conn.close()
+        return jsonify({'success': False, 'message': str(e)})
